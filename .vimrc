@@ -24,6 +24,8 @@ filetype plugin indent on
 
 " Section: Displaying text
 
+set scrolloff=1
+set sidescrolloff=1
 set lazyredraw
 set cmdheight=1
 
@@ -88,6 +90,7 @@ set timeoutlen=1200
 set ttimeoutlen=50
 
 nnoremap <leader>w :w<return>
+let g:user_emmet_leader_key=','
 
 " Section: Reading and writing files
 
