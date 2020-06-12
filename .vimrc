@@ -90,6 +90,7 @@ set timeoutlen=1200
 set ttimeoutlen=50
 
 nnoremap <leader>w :w<return>
+nnoremap <leader>ss :setlocal spell!<cr>
 let g:user_emmet_leader_key=','
 
 " Section: Reading and writing files
