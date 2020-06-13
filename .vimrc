@@ -98,6 +98,10 @@ let g:user_emmet_leader_key=','
 set autoread
 set autowrite
 
+set backupdir=$TMPDIR
+set directory=$TMPDIR
+set undodir=$TMPDIR
+
 " Section: Command line editing
 
 set history=200
