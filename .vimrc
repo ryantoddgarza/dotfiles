@@ -38,7 +38,6 @@ nnoremap <C-l> <C-W>l
 
 " Section: GUI
 
-syntax enable
 set background=dark
 colorscheme monokai
 
@@ -91,6 +90,8 @@ set ttimeoutlen=50
 
 nnoremap <leader>w :w<return>
 nnoremap <leader>ss :setlocal spell!<cr>
+map <silent><leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
+
 let g:user_emmet_leader_key=','
 
 " Section: Reading and writing files
