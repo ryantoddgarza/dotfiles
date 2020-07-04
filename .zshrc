@@ -31,6 +31,7 @@ zmodload zsh/zprof
 
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias v.="vim ."
 alias txls="tmux list-sessions"
 alias txns="tmux new -s"
