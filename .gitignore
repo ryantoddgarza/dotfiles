@@ -1,5 +1,7 @@
-.DS_Store
-
-# Vim
+# vim
 .viminfo
 .netrwhist
+
+# misc
+.DS_Store
+
