@@ -63,6 +63,11 @@ alias txns="tmux new -s"
 alias txat="tmux attach -t"
 alias bsserve="browser-sync start -sf ."
 alias ongoing="cd ~/Code/Ongoing"
+alias mysql="sudo /usr/local/bin/mysql"
+alias mysql.start="sudo /usr/local/mysql/support-files/mysql.server start"
+alias mysql.stop="sudo /usr/local/mysql/support-files/mysql.server stop"
+alias mysql.restart="sudo /usr/local/mysql/support-files/mysql.server restart"
+alias mysql.status="sudo /usr/local/mysql/support-files/mysql.server status"
 
 # node version manager
 export NVM_DIR=~/.nvm
