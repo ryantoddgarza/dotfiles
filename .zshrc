@@ -6,9 +6,34 @@ export TERM="screen-256color"
 
 autoload -Uz colors && colors
 
+# prompt
+
+git_prompt_info() {
+  ref=${$(command git symbolic-ref HEAD 2> /dev/null)#refs/heads/} || \
+    ref=${$(command git rev-parse HEAD 2>/dev/null)[1][1,7]} || \
+    return
+  case "$TERM" in
+    *-256color)             branchcolor=$'\e[38;5;36m'   ;;
+    *)                      branchcolor="$fg_bold[cyan]" ;;
+  esac
+  print -Pn '(%%{$branchcolor%%}%20>..>$ref%<<%%{\e[00m%%})'
+}
+
+local usercolor="$fg_bold[yellow]"
+local dircolor="$fg_bold[cyan]"
+case "$TERM" in
+  *-256color)
+    usercolor=$'\e[38;5;184m'
+    dircolor=$'\e[38;5;38m'
+    ;;
+esac
+[ $UID = '0' ] && usercolor="$fg_bold[white]"
+reset_color=$'\e[00m'
+
 setopt prompt_subst
 PROMPT="%(?:%{$fg[white]%}➜ :%{$fg[red]%}➜ )"
-PROMPT+=" %{$fg[cyan]%}%c%{$reset_color%} "
+PROMPT+=" %{$dircolor%}%c%{$reset_color%} "
+PROMPT+="\$(git_prompt_info) "
 
 # completion
 
