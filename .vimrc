@@ -129,3 +129,4 @@ autocmd FileType markdown,text,txt setlocal linebreak spell
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:airline_theme='molokai'
 let g:user_emmet_leader_key=','
+let g:ale_linters = { 'javascript': ['eslint'], }

@@ -4,3 +4,6 @@
 [submodule ".vim/pack/syntax/start/vim-jsx-pretty"]
 	path = .vim/pack/syntax/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule ".vim/pack/linting/start/ale"]
+	path = .vim/pack/linting/start/ale
+	url = https://github.com/dense-analysis/ale.git
