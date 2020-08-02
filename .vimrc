@@ -48,7 +48,6 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 set number
-set relativenumber
 set numberwidth=5
 
 set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
