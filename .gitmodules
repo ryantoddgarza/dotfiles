@@ -7,6 +7,6 @@
 [submodule ".vim/pack/linting/start/ale"]
 	path = .vim/pack/linting/start/ale
 	url = https://github.com/dense-analysis/ale.git
-[submodule "/Users/ryantoddgarza/.vim/pack/linting/start/vim-prettier"]
-	path = /Users/ryantoddgarza/.vim/pack/linting/start/vim-prettier
+[submodule ".vim/pack/syntax/start/vim-prettier"]
+	path = .vim/pack/syntax/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier
