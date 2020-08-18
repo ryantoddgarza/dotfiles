@@ -1,5 +1,9 @@
 # ~/.zshrc
 
+# profiling
+
+zmodload zsh/zprof
+
 # theme and appearance
 
 export TERM="screen-256color"
@@ -48,10 +52,6 @@ setopt always_to_end
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-# options
-
-zmodload zsh/zprof
-
 # aliases
 
 alias zshconfig="vim ~/.zshrc"
@@ -71,8 +71,7 @@ alias mysql.status="sudo /usr/local/mysql/support-files/mysql.server status"
 
 # node version manager
 export NVM_DIR=~/.nvm
- [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
 
 # skip the verification of insecure directories
 ZSH_DISABLE_COMPFIX=true
-
