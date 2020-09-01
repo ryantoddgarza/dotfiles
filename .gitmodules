@@ -9,4 +9,4 @@
 	url = https://github.com/dense-analysis/ale.git
 [submodule ".vim/pack/syntax/start/vim-prettier"]
 	path = .vim/pack/syntax/start/vim-prettier
-	url = https://github.com/prettier/vim-prettier
+	url = https://github.com/prettier/vim-prettier.git
