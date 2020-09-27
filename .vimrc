@@ -7,7 +7,6 @@
 "   - GUI
 "   - Messages and info
 "   - Text, tab and indent
-"   - Folding and comments
 "   - Maps
 "   - Reading and writing files
 "   - Command line editing
@@ -74,12 +73,6 @@ set showbreak=>>
 
 set infercase
 set showmatch
-
-" Section: Folding and comments
-
-setglobal commentstring=#\ %s
-
-autocmd FileType js,scss,sass setlocal commentstring=//\ %s
 
 " Section: Maps
 
