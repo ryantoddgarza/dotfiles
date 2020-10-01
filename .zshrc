@@ -1,5 +1,7 @@
 # ~/.zshrc
 
+ZSH_DISABLE_COMPFIX=true
+
 # profiling
 
 zmodload zsh/zprof
@@ -80,20 +82,17 @@ alias ongoing="cd ~/Code/Ongoing"
 # misc
 alias bsserve="browser-sync start -sf ."
 
-# node version manager
-declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+# node, nvm, npm
 
-NODE_GLOBALS+=("node")
-NODE_GLOBALS+=("nvm")
+export NVM_DIR=~/.nvm
+
+NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+NODE_GLOBALS+=(node nvm)
 
 load_nvm () {
-  export NVM_DIR=~/.nvm
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
-  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@; }"
 done
-
-# skip the verification of insecure directories
-ZSH_DISABLE_COMPFIX=true
