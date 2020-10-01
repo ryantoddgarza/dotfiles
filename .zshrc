@@ -8,8 +8,6 @@ zmodload zsh/zprof
 
 # theme and appearance
 
-export TERM="screen-256color"
-
 autoload -Uz colors && colors
 
 # prompt
@@ -40,6 +38,18 @@ setopt prompt_subst
 PROMPT="%(?:%{$fg[white]%}➜ :%{$fg[red]%}➜ )"
 PROMPT+=" %{$dircolor%}%c%{$reset_color%} "
 PROMPT+="\$(git_prompt_info) "
+
+# history
+
+setopt extended_history
+setopt inc_append_history
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt hist_reduce_blanks
 
 # completion
 
@@ -83,8 +93,6 @@ alias ongoing="cd ~/Code/Ongoing"
 alias bsserve="browser-sync start -sf ."
 
 # node, nvm, npm
-
-export NVM_DIR=~/.nvm
 
 NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=(node nvm)
