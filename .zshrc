@@ -54,20 +54,31 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|
 
 # aliases
 
+# system
+alias shutdown="sudo shutdown now"
+alias restart="sudo shutdown -r now"
+alias sleep="pmset sleepnow"
+# config
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias v.="vim ."
+# tmux
 alias txls="tmux list-sessions"
 alias txns="tmux new -s"
 alias txat="tmux attach -t"
-alias bsserve="browser-sync start -sf ."
-alias ongoing="cd ~/Code/Ongoing"
+# vim
+alias v.="vim ."
+# git
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+# sql
 alias mysql="sudo /usr/local/bin/mysql"
 alias mysql.start="sudo /usr/local/mysql/support-files/mysql.server start"
 alias mysql.stop="sudo /usr/local/mysql/support-files/mysql.server stop"
 alias mysql.restart="sudo /usr/local/mysql/support-files/mysql.server restart"
 alias mysql.status="sudo /usr/local/mysql/support-files/mysql.server status"
+# folders
+alias ongoing="cd ~/Code/Ongoing"
+# misc
+alias bsserve="browser-sync start -sf ."
 
 # node version manager
 declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
