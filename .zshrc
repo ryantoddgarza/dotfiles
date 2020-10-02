@@ -98,7 +98,7 @@ NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*
 NODE_GLOBALS+=(node nvm)
 
 load_nvm () {
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
