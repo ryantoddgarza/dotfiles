@@ -76,6 +76,17 @@ alias txat="tmux attach -t"
 # vim
 alias v.="vim ."
 # git
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit"
+alias gcl="git clone"
+alias gco="git checkout"
+alias gd="git diff"
+alias gl="git log"
+alias gpush="git push"
+alias gpull="git pull"
+alias gr="git remote"
+alias gs="git status"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # sql
 alias mysql="sudo /usr/local/bin/mysql"
