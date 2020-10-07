@@ -1,7 +1,5 @@
 # ~/.zshrc
 
-ZSH_DISABLE_COMPFIX=true
-
 # profiling
 zmodload zsh/zprof
 
