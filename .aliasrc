@@ -10,10 +10,10 @@ alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 
 # tmux
-alias txls="tmux list-sessions"
-alias txns="tmux new-session -s"
-alias txkt="tmux kill-session -t"
-alias txat="tmux attach -t"
+alias tls="tmux list-sessions"
+alias tns="tmux new-session -s"
+alias tkt="tmux kill-session -t"
+alias tat="tmux attach -t"
 
 # vim
 alias v.="vim ."
