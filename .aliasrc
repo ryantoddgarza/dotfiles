@@ -11,9 +11,9 @@ alias vimconfig="vim ~/.vimrc"
 
 # tmux
 alias txls="tmux list-sessions"
-alias txns="tmux new -s"
-alias txat="tmux attach -t"
+alias txns="tmux new-session -s"
 alias txkt="tmux kill-session -t"
+alias txat="tmux attach -t"
 
 # vim
 alias v.="vim ."
