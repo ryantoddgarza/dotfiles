@@ -30,6 +30,8 @@ set cmdheight=1
 
 " Section: Windows
 
+autocmd VimResized * :wincmd =
+
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
