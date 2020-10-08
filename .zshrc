@@ -46,6 +46,11 @@ if [[ -r ~/.aliasrc ]]; then
   source ~/.aliasrc
 fi
 
+# tmux
+if [ -z $TMUX  ]; then;
+  tmux;
+fi
+
 # node, nvm, npm
 NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=(node nvm)
