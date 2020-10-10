@@ -103,9 +103,11 @@ let mapleader=","
 set timeoutlen=1200
 set ttimeoutlen=50
 
-nnoremap <leader>w :w<return>
-nnoremap <silent><leader>ss :setlocal spell!<cr>
-map <silent><leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
+nnoremap <leader>w :w<CR>
+nnoremap <silent> <leader>\| :Vexplore<CR>
+nnoremap <silent> <leader>_ :Hexplore<CR>
+nnoremap <silent> <leader>ss :setlocal spell!<CR>
+nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
 
 " Section: Reading and writing files
 
