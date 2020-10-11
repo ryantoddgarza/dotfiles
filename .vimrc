@@ -1,31 +1,17 @@
 " ~/.vimrc
 
-" Sections:
-"   - Basic setup
-"   - Displaying text
-"   - Windows
-"   - GUI
-"   - Messages and info
-"   - Text, tab and indent
-"   - Maps
-"   - Reading and writing files
-"   - Command line editing
-"   - Moving around, searching, patterns and tags
-"   - Filetype settings
-"   - Plugin settings
-
 " Section: Basic setup
 
-set nocompatible
-set pastetoggle=<F2>
+setglobal nocompatible
+setglobal pastetoggle=<F2>
 
 filetype plugin indent on
 
 " Section: Displaying text
 
-set scrolloff=1
-set sidescrolloff=1
-set lazyredraw
+setglobal scrolloff=1
+setglobal sidescrolloff=1
+setglobal lazyredraw
 set cmdheight=1
 
 " Section: Windows
@@ -68,40 +54,36 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-set number
-set numberwidth=5
-
-set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
+setglobal number
+setglobal numberwidth=5
+setglobal guioptions-=l guioptions-=L guioptions-=r guioptions-=R
 
 " Section: Messages and info
 
-set confirm
-set showcmd
+setglobal confirm
+setglobal showcmd
 
 " Section: Text, tab and indent
 
-set backspace=2
+setglobal backspace=2
+setglobal expandtab
+setglobal softtabstop=2
+setglobal shiftwidth=2
+setglobal tabstop=8
 
-set expandtab
+setglobal breakindent
+setglobal breakindentopt=shift:4,min:40,sbr
+setglobal showbreak=>>
 
-set softtabstop=2
-set shiftwidth=2
-
-set tabstop=8
-
-set breakindent
-set breakindentopt=shift:4,min:40,sbr
-set showbreak=>>
-
-set infercase
-set showmatch
+setglobal infercase
+setglobal showmatch
 
 " Section: Maps
 
 let mapleader=","
 
-set timeoutlen=1200
-set ttimeoutlen=50
+setglobal timeoutlen=1200
+setglobal ttimeoutlen=50
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 
@@ -113,8 +95,8 @@ nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> el
 
 " Section: Reading and writing files
 
-set autoread
-set autowrite
+setglobal autoread
+setglobal autowrite
 
 function! EnsureCacheExists ()
   if !isdirectory($VIM_CACHE)
@@ -131,20 +113,20 @@ setglobal undodir=$TMPDIR
 
 " Section: Command line editing
 
-set history=200
-set wildmenu
-set wildmode=full
-set wildignore=*.o,*~,*.pyc
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+setglobal history=200
+setglobal wildmenu
+setglobal wildmode=full
+setglobal wildignore=*.o,*~,*.pyc
+setglobal wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " Section: Moving around, searching, patterns and tags
 
-set ignorecase
-set smartcase
-set incsearch
+setglobal ignorecase
+setglobal smartcase
+setglobal incsearch
 
 " Search down into subfolders
-set path+=**
+setglobal path+=**
 
 " Section: Filetype settings
 
