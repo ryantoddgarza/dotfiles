@@ -2,16 +2,16 @@
 
 " Section: Basic setup
 
-setglobal nocompatible
-setglobal pastetoggle=<F2>
+set nocompatible
+set pastetoggle=<F2>
 
 filetype plugin indent on
 
 " Section: Displaying text
 
-setglobal scrolloff=1
-setglobal sidescrolloff=1
-setglobal lazyredraw
+set scrolloff=1
+set sidescrolloff=1
+set lazyredraw
 set cmdheight=1
 
 " Section: Windows
@@ -54,36 +54,36 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-setglobal number
-setglobal numberwidth=5
-setglobal guioptions-=l guioptions-=L guioptions-=r guioptions-=R
+set number
+set numberwidth=5
+set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
 
 " Section: Messages and info
 
-setglobal confirm
-setglobal showcmd
+set confirm
+set showcmd
 
 " Section: Text, tab and indent
 
-setglobal backspace=2
-setglobal expandtab
-setglobal softtabstop=2
-setglobal shiftwidth=2
-setglobal tabstop=8
+set backspace=2
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+set tabstop=8
 
-setglobal breakindent
-setglobal breakindentopt=shift:4,min:40,sbr
-setglobal showbreak=>>
+set breakindent
+set breakindentopt=shift:4,min:40,sbr
+set showbreak=>>
 
-setglobal infercase
-setglobal showmatch
+set infercase
+set showmatch
 
 " Section: Maps
 
 let mapleader=","
 
-setglobal timeoutlen=1200
-setglobal ttimeoutlen=50
+set timeoutlen=1200
+set ttimeoutlen=50
 
 nnoremap <leader>r :source ~/.vimrc<CR>
 
@@ -95,8 +95,8 @@ nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> el
 
 " Section: Reading and writing files
 
-setglobal autoread
-setglobal autowrite
+set autoread
+set autowrite
 
 function! EnsureCacheExists ()
   if !isdirectory($VIM_CACHE)
@@ -105,28 +105,28 @@ function! EnsureCacheExists ()
 endfunction
 
 call EnsureCacheExists()
-setglobal viminfofile=$VIM_CACHE/viminfo
+set viminfofile=$VIM_CACHE/viminfo
 
-setglobal backupdir=$TMPDIR
-setglobal directory=$TMPDIR
-setglobal undodir=$TMPDIR
+set backupdir=$TMPDIR
+set directory=$TMPDIR
+set undodir=$TMPDIR
 
 " Section: Command line editing
 
-setglobal history=200
-setglobal wildmenu
-setglobal wildmode=full
-setglobal wildignore=*.o,*~,*.pyc
-setglobal wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set history=200
+set wildmenu
+set wildmode=full
+set wildignore=*.o,*~,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " Section: Moving around, searching, patterns and tags
 
-setglobal ignorecase
-setglobal smartcase
-setglobal incsearch
+set ignorecase
+set smartcase
+set incsearch
 
 " Search down into subfolders
-setglobal path+=**
+set path+=**
 
 " Section: Filetype settings
 
