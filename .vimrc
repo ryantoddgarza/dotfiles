@@ -103,6 +103,8 @@ let mapleader=","
 set timeoutlen=1200
 set ttimeoutlen=50
 
+nnoremap <leader>r :source ~/.vimrc<CR>
+
 nnoremap <leader>w :w<CR>
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
