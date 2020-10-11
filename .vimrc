@@ -154,6 +154,7 @@ autocmd FileType markdown,text,txt setlocal linebreak spell
 " Section: Plugin settings
 
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_dirhistmax=0
 let g:airline_theme='molokai'
 let g:user_emmet_leader_key=','
 let g:ale_linters = { 'javascript': ['eslint'], }
