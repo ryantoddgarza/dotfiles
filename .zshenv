@@ -2,6 +2,9 @@
 
 export TERM="screen-256color"
 
+# cache
+export VIM_CACHE="$HOME/.cache/vim"
+
 # zsh
 export HISTFILE="$HOME/.cache/zsh/zsh_history"
 export HISTSIZE=100

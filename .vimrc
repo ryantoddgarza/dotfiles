@@ -114,9 +114,18 @@ nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> el
 set autoread
 set autowrite
 
-set backupdir=$TMPDIR
-set directory=$TMPDIR
-set undodir=$TMPDIR
+function! EnsureCacheExists ()
+  if !isdirectory($VIM_CACHE)
+    call mkdir($VIM_CACHE, 'p')
+  endif
+endfunction
+
+call EnsureCacheExists()
+setglobal viminfofile=$VIM_CACHE/viminfo
+
+setglobal backupdir=$TMPDIR
+setglobal directory=$TMPDIR
+setglobal undodir=$TMPDIR
 
 " Section: Command line editing
 
