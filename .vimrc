@@ -74,8 +74,8 @@ let mapleader=","
 set timeoutlen=1200
 set ttimeoutlen=50
 
-" nmap j gj
-" nmap k gk
+map j gj
+map k gk
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>vi :tabe ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
