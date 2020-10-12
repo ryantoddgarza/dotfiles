@@ -1,23 +1,90 @@
 " ~/.vimrc
 
-" Section: Basic setup
+" Section: Important
 
 set nocompatible
 set pastetoggle=<F2>
 
 filetype plugin indent on
 
+" Section: Moving around, searching and patterns
+
+set path+=** " Search down into subfolders
+
+set incsearch
+set ignorecase
+set smartcase
+
 " Section: Displaying text
 
+set breakindent
+set breakindentopt=shift:4,min:40,sbr
+set showbreak=>>
 set scrolloff=1
 set sidescrolloff=1
-set lazyredraw
 set cmdheight=1
+set lazyredraw
+set number
+set numberwidth=5
 
-" Section: Windows
+" Section: GUI
 
+colorscheme monokai
+
+" Redistribute panes on window resize
 autocmd VimResized * :wincmd =
 
+" Make trailing whitespace obvious
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+" No scrollbars
+set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
+
+" Section: Syntax, highlighting and spelling
+
+set background=dark
+syntax on
+highlight ExtraWhitespace ctermbg=darkred guibg=darkred
+
+" Section: Messages and info
+
+set showcmd
+set confirm
+
+" Section: Editing text
+
+set undodir=$TMPDIR
+set backspace=2
+set infercase
+set showmatch
+
+" Section: Tabs and indenting
+
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Section: Mapping
+
+let mapleader=","
+
+set timeoutlen=1200
+set ttimeoutlen=50
+
+" nmap j gj
+" nmap k gk
+nnoremap <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>vi :tabe ~/.vimrc<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <silent> <leader>\| :Vexplore<CR>
+nnoremap <silent> <leader>_ :Hexplore<CR>
+nnoremap <silent> <leader>ss :setlocal spell!<CR>
+nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
+
+" Integrating pane switching with tmux
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
@@ -43,60 +110,24 @@ else
   map <C-l> <C-w>l
 endif
 
-" Section: GUI
-
-syntax on
-set background=dark
-colorscheme monokai
-
-highlight ExtraWhitespace ctermbg=darkred guibg=darkred
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-set number
-set numberwidth=5
-set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
-
-" Section: Messages and info
-
-set confirm
-set showcmd
-
-" Section: Text, tab and indent
-
-set backspace=2
-set expandtab
-set softtabstop=2
-set shiftwidth=2
-set tabstop=8
-
-set breakindent
-set breakindentopt=shift:4,min:40,sbr
-set showbreak=>>
-
-set infercase
-set showmatch
-
-" Section: Maps
-
-let mapleader=","
-
-set timeoutlen=1200
-set ttimeoutlen=50
-
-nnoremap <leader>r :source ~/.vimrc<CR>
-
-nnoremap <leader>w :w<CR>
-nnoremap <silent> <leader>\| :Vexplore<CR>
-nnoremap <silent> <leader>_ :Hexplore<CR>
-nnoremap <silent> <leader>ss :setlocal spell!<CR>
-nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
-
 " Section: Reading and writing files
 
-set autoread
+set backupdir=$TMPDIR
 set autowrite
+set autoread
+
+" Section: The swap file
+
+set directory=$TMPDIR
+
+" Section: Command line editing
+
+set history=200
+set wildmode=full
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildmenu
+
+" Section: Various
 
 function! EnsureCacheExists ()
   if !isdirectory($VIM_CACHE)
@@ -106,27 +137,6 @@ endfunction
 
 call EnsureCacheExists()
 set viminfofile=$VIM_CACHE/viminfo
-
-set backupdir=$TMPDIR
-set directory=$TMPDIR
-set undodir=$TMPDIR
-
-" Section: Command line editing
-
-set history=200
-set wildmenu
-set wildmode=full
-set wildignore=*.o,*~,*.pyc
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-
-" Section: Moving around, searching, patterns and tags
-
-set ignorecase
-set smartcase
-set incsearch
-
-" Search down into subfolders
-set path+=**
 
 " Section: Filetype settings
 
@@ -139,5 +149,4 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_dirhistmax=0
 let g:airline_theme='molokai'
 let g:user_emmet_leader_key=','
-let g:ale_linters = { 'javascript': ['eslint'], }
-let g:ale_enabled = 1
+let g:ale_linters = { 'javascript': ['eslint'] }
