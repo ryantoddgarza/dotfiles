@@ -38,3 +38,6 @@
 	path = .vim/pack/plugins/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier.git
         ignore = dirty
+[submodule ".vim/pack/plugins/start/vimwiki"]
+	path = .vim/pack/plugins/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
