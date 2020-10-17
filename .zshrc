@@ -13,8 +13,8 @@ prompt_color() {
 
 local success_color="$fg[white]"
 local error_color="$fg[red]"
-local dir_color=$'\e[38;5;38m'
-local branch_color=$'\e[38;5;36m'
+local dir_color="$fg[cyan]"
+local branch_color="$fg[yellow]"
 
 prompt_dircolor() { print "$(prompt_color "$1" "$dir_color")" }
 prompt_branchcolor() { print "$(prompt_color "$1" "$branch_color")" }
