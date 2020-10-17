@@ -76,6 +76,14 @@ set ttimeoutlen=50
 
 map j gj
 map k gk
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>vi :tabe ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
@@ -141,7 +149,8 @@ set viminfofile=$VIM_CACHE/viminfo
 " Section: Filetype settings
 
 autocmd FileType * setlocal nolinebreak
-autocmd FileType markdown,text,txt setlocal linebreak spell
+autocmd FileType markdown,text,vimwiki setlocal linebreak
+autocmd FileType markdown,text setlocal spell
 autocmd FileType markdown nmap <Nop> <Plug>VimwikiRemoveHeaderLevel
 
 " Section: Plugin settings
