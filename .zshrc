@@ -7,20 +7,32 @@ zmodload zsh/zprof
 autoload -Uz colors && colors
 
 # prompt
-git_prompt_info() {
+prompt_color() {
+  [[ -n "$1" ]] && print "%{$2%}$1%{$reset_color%}"
+}
+
+local success_color="$fg[white]"
+local error_color="$fg[red]"
+local dir_color=$'\e[38;5;38m'
+local branch_color=$'\e[38;5;36m'
+
+prompt_dircolor() { print "$(prompt_color "$1" "$dir_color")" }
+prompt_branchcolor() { print "$(prompt_color "$1" "$branch_color")" }
+prompt_successcolor() { print "$(prompt_color "$1" "$success_color")" }
+prompt_errorcolor() { print "$(prompt_color "$1" "$error_color")" }
+
+prompt_exit_status() { print "%(?:$(prompt_successcolor "➜ "):$(prompt_errorcolor "➜ "))" }
+prompt_shortened_path() { print "$(prompt_dircolor "%1~")" }
+prompt_git_branch() {
   ref=${$(command git symbolic-ref HEAD 2> /dev/null)#refs/heads/} || \
     ref=${$(command git rev-parse HEAD 2>/dev/null)[1][1,7]} || \
     return
-  local branchcolor=$'\e[38;5;36m'
-  print -Pn '(%%{$branchcolor%%}%20>..>$ref%<<%%{\e[00m%%})'
+  print "($(prompt_branchcolor "%20>..>$ref%<<"))"
 }
 
-local dircolor=$'\e[38;5;38m'
-
 setopt prompt_subst
-PS1="%(?:%{$fg[white]%}➜ :%{$fg[red]%}➜ ) "
-PS1+="%{$dircolor%}%1~%{$reset_color%} "
-PS1+="\$(git_prompt_info) "
+
+PS1='$(prompt_exit_status) $(prompt_shortened_path) $(prompt_git_branch) '
 
 # history
 setopt inc_append_history
@@ -52,13 +64,13 @@ if [ -z $TMUX  ]; then;
 fi
 
 # node, nvm, npm
-NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-NODE_GLOBALS+=(node nvm)
+# NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 4 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+# NODE_GLOBALS+=(node nvm)
 
-load_nvm () {
+# load_nvm () {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-}
+# }
 
-for cmd in "${NODE_GLOBALS[@]}"; do
-  eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@; }"
-done
+# for cmd in "${NODE_GLOBALS[@]}"; do
+#   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@; }"
+# done
