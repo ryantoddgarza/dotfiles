@@ -41,3 +41,6 @@
 [submodule ".vim/pack/plugins/start/vimwiki"]
 	path = .vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule ".zsh/plugins/zsh-syntax-highlighting"]
+	path = .zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

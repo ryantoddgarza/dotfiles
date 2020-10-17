@@ -74,3 +74,6 @@ fi
 # for cmd in "${NODE_GLOBALS[@]}"; do
 #   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@; }"
 # done
+
+# plugins
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
