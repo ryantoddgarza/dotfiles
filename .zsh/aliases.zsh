@@ -4,8 +4,9 @@ alias restart="sudo shutdown -r now"
 alias sleep="pmset sleepnow"
 
 # config
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
+alias zconfig="vim ~/.zsh/"
+alias vconfig="vim ~/.vimrc"
+alias tconfig="vim ~/.tmux.conf"
 
 # tmux
 alias txls="tmux list-sessions"
