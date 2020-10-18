@@ -1,3 +1,5 @@
+# ~/.zshrc
+
 for file in "$ZSH_DIR"/*.zsh; do
   source "$file"
 done

@@ -4,23 +4,23 @@ prompt_color() {
   [[ -n "$1" ]] && print "%{$2%}$1%{$reset_color%}"
 }
 
-local dir_color="$fg[cyan]"
 prompt_dircolor() {
+  dir_color="$fg[cyan]"
   print "$(prompt_color "$1" "$dir_color")"
 }
 
-local branch_color="$fg[yellow]"
 prompt_branchcolor() {
+  branch_color="$fg[yellow]"
   print "$(prompt_color "$1" "$branch_color")"
 }
 
-local success_color="$fg[white]"
 prompt_successcolor() {
+  success_color="$fg[white]"
   print "$(prompt_color "$1" "$success_color")"
 }
 
-local error_color="$fg[red]"
 prompt_errorcolor() {
+  error_color="$fg[red]"
   print "$(prompt_color "$1" "$error_color")"
 }
 
