@@ -6,9 +6,8 @@ export TERM="screen-256color"
 export VIM_CACHE="$HOME/.cache/vim"
 
 # zsh
-export HISTFILE="$HOME/.cache/zsh/zsh_history"
-export HISTSIZE=100
-export SAVEHIST=$HISTSIZE
+export ZSH_DIR="$HOME/.zsh"
+export ZSH_CACHE="$HOME/.cache/zsh"
 
 # node, nvm, npm
 export NVM_DIR="$HOME/.nvm"

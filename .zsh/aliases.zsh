@@ -1,5 +1,3 @@
-# ~/.aliasrc
-
 # system
 alias shutdown="sudo shutdown now"
 alias restart="sudo shutdown -r now"
