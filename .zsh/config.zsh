@@ -1,11 +1,6 @@
 # profiling
 zmodload zsh/zprof
 
-# always start in tmux
-if [[ -z $TMUX  ]]; then;
-  tmux;
-fi
-
 # lazy load nvm FIXME
 # NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 4 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 # NODE_GLOBALS+=(node nvm)
