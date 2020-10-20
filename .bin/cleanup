@@ -1,0 +1,103 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+exit_trap() {
+  # Invalidate cached credentials
+  sudo -k
+}
+
+trap exit_trap EXIT
+
+# System color variables
+reset_fg='\033[0m'
+success_fg='\033[34m'
+warn_fg='\033[33m'
+danger_fg='\033[31m'
+
+# System messages
+success_msg() {
+  printf "${success_fg}$1${reset_fg}"
+}
+
+warning_msg() {
+  printf "${warn_fg}$1${reset_fg}"
+}
+
+danger_msg() {
+  printf "${danger_fg}$1${reset_fg}"
+}
+
+# Immediately validate sudo user
+sudo -v
+
+system_commands() {
+  # Empty system trash
+  echo 'Emptying trash...'
+  rm -rf ~/.Trash/*
+
+  # Purge inactive memory
+  echo 'Purging inactive memory...'
+  sudo purge
+}
+
+_delete_all_contents() {
+  confirm_del_msg=$(printf\
+    "\n$(danger_msg "Warning:") This action cannot be undone.\
+    \n- Enter \'DELETE\' to proceed (case sensitive)\
+    \n- Enter anything else to return to prompt\
+    \n  ")
+
+  handle_delete() {
+    glob=$(printf "$1/*")
+    rm -r $glob
+    echo $(success_msg "Deleted all files and directories in $1")
+  }
+
+  handle_abort() {
+    echo $(success_msg "Aborted")
+  }
+
+  read -p "$confirm_del_msg" confirm
+  case $confirm in
+    'DELETE' ) handle_delete $1; break;;
+    * ) handle_abort
+  esac
+}
+
+prefer_empty_dir() {
+  contents_of_dir=$(ls -l $1 | wc -l)
+  dirty_msg=$(printf "$(warning_msg "Dirty:") There are uneccesary items in $1.")
+  list_msg=$(success_msg "Contains:")
+  open_msg=$(success_msg "Opened $1 in Finder")
+  skip_msg=$(success_msg "Skipped")
+
+  if [ $contents_of_dir -gt 0 ]; then
+    echo $dirty_msg; echo 'Would you like to'
+    select option in "List files" "Open in Finder" "Skip" "DELETE ALL"; do
+      case $option in
+        "List files" ) echo $list_msg; ls $1;;
+        "Open in Finder" ) open $1; echo $open_msg; break;;
+        "Skip" ) echo $skip_msg; break;;
+        "DELETE ALL" ) _delete_all_contents $1;;
+      esac
+    done
+  fi
+}
+
+remove_extraneous_files() {
+  echo 'Removing extraneous files...'
+
+  # Recursively delete `.DS_Store` files FIXME
+  # find . -type f -name '*.DS_Store' -ls -delete
+
+  prefer_empty_dir "$HOME/Desktop"
+  prefer_empty_dir "$HOME/Downloads"
+}
+
+do_it() {
+  system_commands
+  remove_extraneous_files
+}
+
+do_it
