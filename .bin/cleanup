@@ -51,7 +51,7 @@ delete_all_contents() {
   handle_delete() {
     glob=$(printf "$1/*")
     rm -r $glob
-    echo $(success_msg "Deleted all files and directories in $1")
+    echo $(success_msg "Deleted all files and directories in $(basename $1)")
   }
 
   handle_abort() {
@@ -67,7 +67,7 @@ delete_all_contents() {
 
 prefer_empty_dir() {
   contents_of_dir=$(ls -l $1 | wc -l)
-  dirty_msg=$(printf "$(warning_msg "Dirty:") There are uneccesary items in $1.")
+  dirty_msg=$(printf "$(warning_msg "Dirty:") There are uneccesary items in $(basename $1).")
   list_msg=$(success_msg "Contains:")
   open_msg=$(success_msg "Opened $1 in Finder")
   skip_msg=$(success_msg "Skipped")
