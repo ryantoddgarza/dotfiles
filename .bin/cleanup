@@ -41,7 +41,7 @@ system_commands() {
   sudo purge
 }
 
-_delete_all_contents() {
+delete_all_contents() {
   confirm_del_msg=$(printf\
     "\n$(danger_msg "Warning:") This action cannot be undone.\
     \n- Enter \'DELETE\' to proceed (case sensitive)\
@@ -79,7 +79,7 @@ prefer_empty_dir() {
         "List files" ) echo $list_msg; ls $1;;
         "Open in Finder" ) open $1; echo $open_msg; break;;
         "Skip" ) echo $skip_msg; break;;
-        "DELETE ALL" ) _delete_all_contents $1;;
+        "DELETE ALL" ) delete_all_contents $1; break;;
       esac
     done
   fi
