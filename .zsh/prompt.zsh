@@ -9,14 +9,14 @@ prompt_dircolor() {
   print "$(prompt_color "$1" "$dir_color")"
 }
 
-prompt_branchcolor() {
-  branch_color="$fg[yellow]"
-  print "$(prompt_color "$1" "$branch_color")"
-}
-
 prompt_successcolor() {
   success_color="$fg[white]"
   print "$(prompt_color "$1" "$success_color")"
+}
+
+prompt_warningcolor() {
+  warning_color="$fg[yellow]"
+  print "$(prompt_color "$1" "$warning_color")"
 }
 
 prompt_errorcolor() {
@@ -33,12 +33,24 @@ prompt_shortened_path() {
 }
 
 prompt_git_branch() {
-  ref=${$(command git symbolic-ref HEAD 2>/dev/null)#refs/heads/} || \
-    ref=${$(command git rev-parse HEAD 2>/dev/null)[1][1,7]} || \
-    return
-  print "($(prompt_branchcolor "%20>..>$ref%<<"))"
+  ref=${$(command git symbolic-ref HEAD 2>/dev/null)#refs/heads/} || return
+  print "$ref"
+}
+
+prompt_git_dirty() {
+  if $(! command git status -s &> /dev/null)
+  then
+    print ''
+  else
+    if [[ $(command git status --porcelain) == '' ]]
+    then
+      print "on $(prompt_git_branch)"
+    else
+      print "on $(prompt_warningcolor $(prompt_git_branch))"
+    fi
+  fi
 }
 
 setopt prompt_subst
 
-PS1='$(prompt_exit_status) $(prompt_shortened_path) $(prompt_git_branch) '
+PS1='$(prompt_exit_status) $(prompt_shortened_path) $(prompt_git_dirty) '
