@@ -9,13 +9,13 @@ exit_trap() {
 
 trap exit_trap EXIT
 
-# System color variables
+# Script color variables
 reset_fg='\033[0m'
 success_fg='\033[34m'
 warn_fg='\033[33m'
 danger_fg='\033[31m'
 
-# System messages
+# Script messages
 success_msg() {
   printf "${success_fg}$1${reset_fg}"
 }
@@ -31,14 +31,23 @@ danger_msg() {
 # Immediately validate sudo user
 sudo -v
 
-system_commands() {
+clean_packages() {
+  # Homebrew
+  echo 'Homebrew cleanup...'
+  brew cleanup
+}
+
+clean_system() {
+  # Purge inactive memory
+  echo 'Purging inactive memory...'
+  sudo purge
+}
+
+clean_local() {
   # Empty system trash
   echo 'Emptying trash...'
   rm -rf ~/.Trash/*
 
-  # Purge inactive memory
-  echo 'Purging inactive memory...'
-  sudo purge
 }
 
 delete_all_contents() {
@@ -96,8 +105,10 @@ remove_extraneous_files() {
 }
 
 do_it() {
-  system_commands
+  clean_packages
+  clean_system
   remove_extraneous_files
+  clean_local
 }
 
 do_it
