@@ -44,3 +44,6 @@
 [submodule ".zsh/plugins/zsh-syntax-highlighting"]
 	path = .zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "/Users/ryantoddgarza/.vim/pack/plugins/start/vader"]
+	path = /Users/ryantoddgarza/.vim/pack/plugins/start/vader
+	url = https://github.com/junegunn/vader.vim.git
