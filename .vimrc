@@ -84,6 +84,8 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+inoremap <leader>U <esc>gUawA
+inoremap <leader>u <esc>guawA
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>vi :tabe ~/.vimrc<CR>
 nnoremap <leader>w :w<CR>
