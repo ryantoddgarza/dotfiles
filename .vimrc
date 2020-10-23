@@ -86,8 +86,8 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 inoremap <leader>U <esc>gUawA
 inoremap <leader>u <esc>guawA
-nnoremap <leader>r :source ~/.vimrc<CR>
-nnoremap <leader>vi :tabe ~/.vimrc<CR>
+nnoremap <leader>ve :tabe $MYVIMRC<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
