@@ -74,8 +74,8 @@ let mapleader=","
 set timeoutlen=1200
 set ttimeoutlen=50
 
-map j gj
-map k gk
+noremap j gj
+noremap k gk
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -114,10 +114,10 @@ if exists('$TMUX')
   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
 else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
+  noremap <C-h> <C-w>h
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-l> <C-w>l
 endif
 
 " Section: Reading and writing files
@@ -153,7 +153,7 @@ set viminfofile=$VIM_CACHE/viminfo
 autocmd FileType * setlocal nolinebreak
 autocmd FileType markdown,text,vimwiki setlocal linebreak
 autocmd FileType markdown,text setlocal spell
-autocmd FileType markdown nmap <Nop> <Plug>VimwikiRemoveHeaderLevel
+autocmd FileType markdown nnoremap <Nop> <Plug>VimwikiRemoveHeaderLevel
 
 " Section: Plugin settings
 
