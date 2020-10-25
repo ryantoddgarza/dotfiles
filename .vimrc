@@ -153,7 +153,6 @@ set viminfofile=$VIM_CACHE/viminfo
 autocmd FileType * setlocal nolinebreak
 autocmd FileType markdown,text,vimwiki setlocal linebreak
 autocmd FileType markdown,text setlocal spell
-autocmd FileType markdown nnoremap <Nop> <Plug>VimwikiRemoveHeaderLevel
 
 " Section: Plugin settings
 
@@ -162,6 +161,7 @@ let g:netrw_dirhistmax = 0
 let g:airline_theme = 'molokai'
 let g:user_emmet_leader_key = ','
 let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'] }
+let g:vimwiki_global_ext = 0
 let g:vimwiki_key_mappings = {
   \   'all_maps': 1,
   \   'global': 1,
