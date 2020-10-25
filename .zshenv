@@ -2,7 +2,8 @@
 
 export TERM="screen-256color"
 
-# cache
+# vim
+export VIM_DIR="$HOME/.vim"
 export VIM_CACHE="$HOME/.cache/vim"
 
 # zsh
