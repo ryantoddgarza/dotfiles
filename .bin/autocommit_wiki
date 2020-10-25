@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+cd_to_repo() {
+  repo_path="$HOME/vimwiki"
+  cd "$repo_path"
+}
+
+autocommit_if_branch_is_dirty() {
+  if [[ $(command git status --porcelain) == '' ]]
+  then
+    exit
+  else
+    git add --all
+    git commit --message="autocommit $(date +'%s')"
+  fi
+}
+
+cd_to_repo
+autocommit_if_branch_is_dirty
