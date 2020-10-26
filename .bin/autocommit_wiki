@@ -17,5 +17,15 @@ autocommit_if_branch_is_dirty() {
   fi
 }
 
+push_if_remote_exists() {
+  if [[ ! $(command git remote) ]]
+  then
+    exit
+  else
+    git push
+  fi
+}
+
 cd_to_repo
 autocommit_if_branch_is_dirty
+push_if_remote_exists
