@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Update package management system installed packages
+
+set -e
+
+exit_trap() {
+  if [[ $? -ne 0 ]]
+  then
+    echo 'Update failed'
+  else
+    echo 'Update successful'
+  fi
+}
+
+trap exit_trap EXIT
+
+update_homebrew() {
+  echo 'Updating Homebrew and its packages...'
+  brew update
+  brew upgrade
+}
+
+update_npm() {
+  echo 'Updating global npm packages...'
+  npm update -g
+}
+
+update_all() {
+  update_homebrew
+  update_npm
+}
+
+update_all
