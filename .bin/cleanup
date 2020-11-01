@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Cleanup local environment
+
 set -e -o pipefail
 
 exit_trap() {
@@ -9,13 +11,13 @@ exit_trap() {
 
 trap exit_trap EXIT
 
-# Script color variables
+# Colors
 reset_fg='\033[0m'
 success_fg='\033[34m'
 warn_fg='\033[33m'
 danger_fg='\033[31m'
 
-# Script messages
+# Messages
 success_msg() {
   printf "${success_fg}$1${reset_fg}"
 }
@@ -41,13 +43,6 @@ clean_system() {
   # Purge inactive memory
   echo 'Purging inactive memory...'
   sudo purge
-}
-
-clean_local() {
-  # Empty system trash
-  echo 'Emptying trash...'
-  rm -rf ~/.Trash/*
-
 }
 
 delete_all_contents() {
@@ -81,14 +76,16 @@ prefer_empty_dir() {
   open_msg=$(success_msg "Opened $1 in Finder")
   skip_msg=$(success_msg "Skipped")
 
-  if [ $contents_of_dir -gt 0 ]; then
+  if [ $contents_of_dir -gt 0 ]
+  then
     echo $dirty_msg; echo 'Would you like to'
-    select option in "List files" "Open in Finder" "Skip" "DELETE ALL"; do
+    select option in "List files" "Open in Finder" "Skip" "DELETE ALL"
+    do
       case $option in
         "List files" ) echo $list_msg; ls $1;;
         "Open in Finder" ) open $1; echo $open_msg; break;;
         "Skip" ) echo $skip_msg; break;;
-        "DELETE ALL" ) delete_all_contents $1; break;;
+        "DELETE ALL" ) delete_all_contents $1;
       esac
     done
   fi
@@ -102,13 +99,16 @@ remove_extraneous_files() {
 
   prefer_empty_dir "$HOME/Desktop"
   prefer_empty_dir "$HOME/Downloads"
+
+  # Empty system trash
+  echo 'Emptying trash...'
+  rm -rf ~/.Trash/*
 }
 
-do_it() {
+cleanup() {
   clean_packages
   clean_system
   remove_extraneous_files
-  clean_local
 }
 
-do_it
+cleanup
