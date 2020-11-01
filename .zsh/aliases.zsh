@@ -31,13 +31,6 @@ alias gr="git reset"
 alias gs="git status"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-# sql
-alias mysql="sudo /usr/local/bin/mysql"
-alias mysql.start="sudo /usr/local/mysql/support-files/mysql.server start"
-alias mysql.stop="sudo /usr/local/mysql/support-files/mysql.server stop"
-alias mysql.restart="sudo /usr/local/mysql/support-files/mysql.server restart"
-alias mysql.status="sudo /usr/local/mysql/support-files/mysql.server status"
-
 # folders
 alias ongoing="cd ~/Code/Ongoing"
 
