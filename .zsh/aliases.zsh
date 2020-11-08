@@ -9,6 +9,7 @@ alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 
 # bin
+alias ls="ls -F"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -iv"
