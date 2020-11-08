@@ -8,6 +8,11 @@ alias zconfig="vim ~/.zsh/"
 alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
 
+# bin
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+
 # tmux
 alias txls="tmux list-sessions"
 alias txns="tmux new-session -s"
