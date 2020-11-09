@@ -25,11 +25,11 @@ prompt_errorcolor() {
 }
 
 prompt_exit_status() {
-  print "%(?:$(prompt_successcolor "➜ "):$(prompt_errorcolor "➜ "))"
+  print "%(?:$(prompt_successcolor "➜  "):$(prompt_errorcolor "➜  "))"
 }
 
 prompt_shortened_path() {
-  print "$(prompt_dircolor "%1~")"
+  print "$(prompt_dircolor "%1~ ")"
 }
 
 prompt_git_branch() {
@@ -44,13 +44,13 @@ prompt_git_dirty() {
   else
     if [[ $(command git status --porcelain) == '' ]]
     then
-      print "on $(prompt_git_branch)"
+      print "on $(prompt_git_branch) "
     else
-      print "on $(prompt_warningcolor $(prompt_git_branch))"
+      print "on $(prompt_warningcolor $(prompt_git_branch)) "
     fi
   fi
 }
 
 setopt prompt_subst
 
-PS1='$(prompt_exit_status) $(prompt_shortened_path) $(prompt_git_dirty) '
+PS1='$(prompt_exit_status)$(prompt_shortened_path)$(prompt_git_dirty) '
