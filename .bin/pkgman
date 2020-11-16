@@ -21,4 +21,17 @@ update_all() {
   update_npm
 }
 
-update_all
+while test $# -gt 0
+do
+  case "$1" in
+    '-u'|'--update')
+      update_all
+      exit
+      ;;
+    *)
+      echo "Invalid option: $1"
+      exit
+      ;;
+  esac
+  shift
+done
