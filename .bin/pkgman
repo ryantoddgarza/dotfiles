@@ -21,11 +21,23 @@ update_all() {
   update_npm
 }
 
+list_packages() {
+  echo 'Homebrew'
+  brew ls
+  echo ''
+  echo 'NPM'
+  npm list -g --depth=0
+}
+
 while test $# -gt 0
 do
   case "$1" in
     '-u'|'--update')
       update_all
+      exit
+      ;;
+    'ls'|'list')
+      list_packages
       exit
       ;;
     *)
