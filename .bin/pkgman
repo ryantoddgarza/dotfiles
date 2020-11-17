@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-# Update all global packages installed via package management systems
+# Manage global packages installed via a package management system
 
 set -e
 
-display_help_and_exit() {
-  echo 'pkgman -- package management systems'
-  echo ''
-  echo 'Usage: pkgman [options]'
-  echo ''
-  echo 'Options:'
-  echo '  -u, --update    Update all globally installed packages'
-  echo '  -h, --help      Show this help message and exit'
-  echo '  ls, list        List all globally installed packages'
+usage() {
+cat << EOF
+usage: pkgman [options]
+
+options:
+  -h    Show this help message
+  -l    List all globally installed packages
+  -u    Update all globally installed packages
+EOF
 }
 
 update_homebrew() {
@@ -33,31 +33,31 @@ update_all() {
 }
 
 list_packages() {
-  echo 'Homebrew'
+  echo 'Homebrew:'
   brew ls
   echo ''
-  echo 'NPM'
+  echo 'NPM:'
   npm list -g --depth=0
 }
 
-while test $# -gt 0
+optstring=':hlu'
+
+while getopts $optstring opt
 do
-  case "$1" in
-    '-h'|'--help')
-      display_help_and_exit
-      ;;
-    '-u'|'--update')
-      update_all
-      exit
-      ;;
-    'ls'|'list')
-      list_packages
-      exit
-      ;;
-    *)
-      echo "Invalid option: $1"
-      exit
+  case $opt in
+    h ) usage ;;
+    l ) list_packages ;;
+    u ) update_all ;;
+    ? )
+      echo "unknown option: -$OPTARG"
+      usage
+      exit 2
       ;;
   esac
-  shift
 done
+
+if ((OPTIND == 1))
+then
+  usage
+  exit 2
+fi
