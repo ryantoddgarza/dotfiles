@@ -1,5 +1,5 @@
 # system
-alias shutdown="sudo shutdown now"
+alias shutdown="sudo shutdown -h now"
 alias restart="sudo shutdown -r now"
 alias sleep="pmset sleepnow"
 
