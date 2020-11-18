@@ -9,7 +9,7 @@ filetype plugin indent on
 
 " Section: Moving around, searching and patterns
 
-set path+=** " Search down into subfolders
+set path+=** " Search recursively
 
 set incsearch
 set ignorecase
@@ -134,7 +134,8 @@ set directory=$TMPDIR
 
 set history=200
 set wildmode=full
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore+=*.o,*~,*.pyc,*/.DS_Store
+set wildignore+=*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*
 set wildmenu
 
 " Section: Various
