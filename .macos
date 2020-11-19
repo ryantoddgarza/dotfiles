@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Close any open System Preferences panes to prevent them from overriding
+# the settings that follow
+osascript -e 'tell application "System Preferences" to quit'
+
+# Immediately validate sudo user
+sudo -v
+
+# KEYBOARD, MOUSE, & TRACKPAD
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Set a fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
