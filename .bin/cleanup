@@ -91,18 +91,21 @@ prefer_empty_dir() {
   fi
 }
 
+empty_trash() {
+  echo 'Emptying trash...'
+  rm -rf $HOME/.Trash/{.[!.],..?,}*
+}
+
 remove_extraneous_files() {
   echo 'Removing extraneous files...'
 
-  # Recursively delete `.DS_Store` files FIXME
+  # Recursively delete `.DS_Store` files
+  # FIXME: "Operation not permitted" on some dirs
   # find . -type f -name '*.DS_Store' -ls -delete
 
   prefer_empty_dir "$HOME/Desktop"
   prefer_empty_dir "$HOME/Downloads"
-
-  # Empty system trash
-  echo 'Emptying trash...'
-  rm -rf ~/.Trash/*
+  empty_trash
 }
 
 cleanup() {
