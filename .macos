@@ -22,16 +22,16 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 20
 # All pm settings to be made in this script
 sudo pmset restoredefaults > /dev/null
 
-# Sleep the display after x minutes while charging
+# Sleep the display after 15 minutes while charging
 sudo pmset -c displaysleep 15
 
 # Disable machine sleep while charging
 sudo pmset -c sleep 0
 
-# Sleep the display after x minutes on battery
+# Sleep the display after 2 minutes on battery
 sudo pmset -b displaysleep 2
 
-# Set machine sleep to x minutes on battery
+# Set machine sleep to 5 minutes on battery
 sudo pmset -b sleep 5
 
 # Set standby delay to 24 hours (default is 1 hour)
@@ -59,3 +59,9 @@ defaults write com.apple.screencapture name -string "`hostname`-`date +"%Y%j_%H%
 
 # Disable drop shadow
 defaults write com.apple.screencapture disable-shadow -bool true
+
+# FINDER
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
