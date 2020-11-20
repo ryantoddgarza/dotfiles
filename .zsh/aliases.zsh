@@ -12,7 +12,7 @@ alias tconfig="vim ~/.tmux.conf"
 alias ls="ls -F"
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -iv"
+alias rm="rm -v"
 
 # tmux
 alias txls="tmux list-sessions"
