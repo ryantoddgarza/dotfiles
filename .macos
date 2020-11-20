@@ -49,7 +49,7 @@ mkdir -p $screencapture_dir
 defaults write com.apple.screencapture location -string "$screencapture_dir"
 
 # Remove default timestamp
-defaults write com.apple.screencapture "include-date" 0
+defaults write com.apple.screencapture include-date -bool false
 
 # Save screenshots as jpg
 defaults write com.apple.screencapture type -string "jpg"
