@@ -26,6 +26,10 @@ push_if_remote_exists() {
   fi
 }
 
-cd_to_repo
-autocommit_if_branch_is_dirty
-push_if_remote_exists
+main() {
+  cd_to_repo
+  autocommit_if_branch_is_dirty
+  push_if_remote_exists
+}
+
+main
