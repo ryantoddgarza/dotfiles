@@ -1,6 +1,9 @@
 # profiling
 zmodload zsh/zprof
 
+# vim mode
+bindkey -v
+
 # lazy load nvm FIXME
 # NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 4 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 # NODE_GLOBALS+=(node nvm)
