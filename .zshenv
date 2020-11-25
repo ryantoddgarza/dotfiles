@@ -1,6 +1,7 @@
 # ~/.zshenv
 
 export TERM="screen-256color"
+export CLICOLOR=1
 
 # vim
 export VIM_DIR="$HOME/.vim"
