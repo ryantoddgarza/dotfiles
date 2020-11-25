@@ -7,6 +7,9 @@
   d = diff
   l = log
   s = status -s
+
+	# Remove branches that have already been merged with main.
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 [color]
   ui = true
 [core]
