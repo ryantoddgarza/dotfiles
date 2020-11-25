@@ -7,6 +7,7 @@ alias sleep="pmset sleepnow"
 alias zconfig="vim ~/.zsh/"
 alias vconfig="vim ~/.vimrc"
 alias tconfig="vim ~/.tmux.conf"
+alias gconfig="vim ~/.gitconfig"
 
 # bin
 alias ls="ls -F"
@@ -25,17 +26,7 @@ alias txat="tmux attach -t"
 alias v.="vim ."
 
 # git
-alias ga="git add"
-alias gb="git branch"
-alias gc="git commit"
-alias gco="git checkout"
-alias gcom="git checkout master"
-alias gd="git diff"
-alias gl="git log"
-alias gpush="git push"
-alias gpull="git pull"
-alias gr="git reset"
-alias gs="git status"
+alias g="git"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # folders

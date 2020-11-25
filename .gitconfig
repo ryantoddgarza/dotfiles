@@ -1,0 +1,20 @@
+[alias]
+  a = add
+  b = branch
+  c = commit
+  co = checkout
+  com = checkout master
+  d = diff
+  l = log
+  s = status -s
+[color]
+  ui = true
+[core]
+	excludesfile = ~/.gitignore
+[credential]
+	helper = osxkeychain
+[http]
+	postBuffer = 524288000
+[user]
+	name = ryantoddgarza
+	email = ryantoddgarza@gmail.com
