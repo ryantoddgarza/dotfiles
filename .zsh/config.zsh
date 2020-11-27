@@ -1,6 +1,3 @@
-# Profiling
-zmodload zsh/zprof
-
 # Vim mode
 bindkey -v
 
