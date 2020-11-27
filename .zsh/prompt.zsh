@@ -1,4 +1,10 @@
 autoload -Uz colors && colors
+setopt prompt_subst
+precmd_functions+=( precmd_prompts )
+
+precmd_prompts() {
+  RPROMPT=""
+}
 
 prompt_color() {
   [[ -n "$1" ]] && print "%{$2%}$1%{$reset_color%}"
@@ -51,6 +57,12 @@ prompt_git_dirty() {
   fi
 }
 
-setopt prompt_subst
+function zle-line-init zle-keymap-select {
+   RPS1="${${KEYMAP}/(main|viins)/}"
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 PS1='$(prompt_exit_status)$(prompt_shortened_path)$(prompt_git_dirty) '
