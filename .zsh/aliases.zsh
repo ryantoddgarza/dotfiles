@@ -1,7 +1,6 @@
 # system
 alias shutdown="sudo shutdown -h now"
 alias restart="sudo shutdown -r now"
-alias sleep="pmset sleepnow"
 
 # config
 alias zconfig="vim ~/.zsh/"
