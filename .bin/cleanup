@@ -95,8 +95,9 @@ remove_all_ds_store() {
   find . -type f -name '*.DS_Store' -ls -delete
 }
 
-empty_trash() {
-  echo 'Emptying trash...'
+empty_trashes() {
+  echo 'Emptying Trash on all mounted volumes...'
+  rm -rf /Volumes/*/.Trashes
   rm -rf $HOME/.Trash/{.[!.],..?,}*
 }
 
@@ -106,7 +107,7 @@ remove_extraneous_files() {
   remove_all_ds_store
   prefer_empty_dir "$HOME/Desktop"
   prefer_empty_dir "$HOME/Downloads"
-  empty_trash
+  empty_trashes
 }
 
 cleanup() {
