@@ -163,6 +163,8 @@ let g:airline_theme = 'molokai'
 let g:user_emmet_leader_key = ','
 let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'] }
 let g:vimwiki_global_ext = 0
+let g:vimwiki_toc_header_level = 2
+let g:vimwiki_list = [{ 'path': '~/vimwiki', 'auto_toc': 1 }]
 let g:vimwiki_key_mappings = {
   \   'all_maps': 1,
   \   'global': 1,
