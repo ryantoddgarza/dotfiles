@@ -93,6 +93,7 @@ nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
 nnoremap <silent> <leader>ss :setlocal spell!<CR>
 nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
+nnoremap <silent> <leader>ta :if exists("g:loaded_ale") <Bar> ALEToggle <Bar> endif <CR>
 
 " Integrating pane switching with tmux
 if exists('$TMUX')
