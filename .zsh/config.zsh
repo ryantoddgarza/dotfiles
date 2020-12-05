@@ -18,15 +18,12 @@ bindkey -v
 
 
 # Completion
-autoload -Uz compinit && compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'l:|=* r:|=*'
 
-unsetopt menu_complete
-unsetopt flowcontrol
-setopt auto_menu
 setopt complete_in_word
-setopt always_to_end
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit
+compinit -d "$ZSH_CACHE/zcompdump-$ZSH_VERSION"
 
 # History
 export HISTFILE="$ZSH_CACHE/zsh_history"
