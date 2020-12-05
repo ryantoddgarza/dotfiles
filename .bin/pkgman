@@ -27,8 +27,54 @@ update_npm() {
   npm update -g
 }
 
+nvm_excluded_global_binaries() {
+  not_these='node npm npx'
+
+  for file in $not_these
+  do
+    echo "! -name $file"
+  done
+}
+
+nvm_global_binaries() {
+  global_binary_paths="$(find "$NVM_DIR"/versions/*/*/bin/* -type l -wholename '*/bin/*' $(nvm_excluded_global_binaries))"
+
+  if [[ -n "$global_binary_paths" ]]
+  then
+    echo $global_binary_paths | xargs -n 1 basename | sort | uniq
+  fi
+}
+
+nvm_install_global_binaries() {
+cat << EOF
+› npm -g install
+$(nvm_global_binaries)
+EOF
+  npm -g install $(nvm_global_binaries)
+}
+
+nvm_install_long_term_support() {
+  echo '› nvm install --lts'
+  nvm install --lts
+
+  echo '› nvm alias default node'
+  nvm alias default node
+}
+
+update_nvm() {
+  if [ -s "$NVM_DIR/nvm.sh"  ]
+  then
+    \. "$NVM_DIR/nvm.sh"
+    nvm_install_long_term_support
+    nvm_install_global_binaries
+  else
+    echo 'failed to source nvm.sh'
+  fi
+}
+
 update_all() {
   update_homebrew
+  update_nvm
   update_npm
 }
 
