@@ -12,7 +12,6 @@ alias gconfig="vim ~/.gitconfig"
 alias ls="ls -F"
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -v"
 alias du="du -csh"
 
 # tmux
