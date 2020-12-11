@@ -18,3 +18,6 @@ sudo pmset -b sleep 5
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
+
+# Disable screen dim on battery
+sudo pmset -b lessbright 0
