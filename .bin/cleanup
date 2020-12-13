@@ -97,7 +97,7 @@ remove_all_ds_store() {
 
 empty_trashes() {
   echo 'Emptying Trash on all mounted volumes...'
-  rm -rf /Volumes/*/.Trashes
+  sudo rm -rf /Volumes/*/.Trashes
   rm -rf $HOME/.Trash/{.[!.],..?,}*
 }
 

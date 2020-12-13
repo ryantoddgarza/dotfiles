@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# grep recursively and substitute a replacement string in the file in-place.
+
+set -e -o pipefail
+
+usage() {
+cat << EOF
+srsed -- substitute every instance of a pattern recursively
+
+usage: srsed path find-pattern swap-pattern
+EOF
+}
+
+if [[ -z $3 ]]
+then
+  echo 'missing arguments'
+  exit 1
+fi
+
+# grep -rl $2 "$1" | xargs sed -i '' "s/$2/$3/g"
