@@ -21,7 +21,7 @@ alias txkt="tmux kill-session -t"
 alias txat="tmux attach -t"
 
 # vim
-alias v.="vim ."
+alias v="vim ."
 
 # git
 alias g="git"
