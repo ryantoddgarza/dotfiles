@@ -154,7 +154,7 @@ set viminfofile=$VIM_CACHE/viminfo
 
 autocmd FileType * setlocal nolinebreak
 autocmd FileType markdown,text,vimwiki setlocal linebreak
-autocmd FileType markdown,text setlocal spell
+" autocmd FileType markdown,text setlocal spell
 
 " Section: Plugin settings
 
