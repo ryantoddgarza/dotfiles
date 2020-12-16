@@ -1,14 +1,8 @@
 # Vim mode
 bindkey -v
 
-# Lazy load nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
-
-function node npm yarn {
-  unfunction node npm yarn
-  nvm use default
-  command "$0" "$@"
-}
+# Load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'l:|=* r:|=*'
