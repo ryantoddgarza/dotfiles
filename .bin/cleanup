@@ -92,7 +92,7 @@ prefer_empty_dir() {
 }
 
 remove_all_ds_store() {
-  find . -type f -name '*.DS_Store' -ls -delete
+  find . -type f -name '*.DS_Store' -not -path '*/node_modules/*' -ls -delete
 }
 
 empty_trashes() {
