@@ -17,9 +17,7 @@ main() {
   make_scripts_executable 'install'
 
   # Install
-  ./install/softwareupdate.sh
-  ./install/xcode.sh
-  ./install/homebrew.sh
+  ./install/main.sh
 }
 
 main

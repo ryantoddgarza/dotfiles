@@ -2,8 +2,12 @@
 
 set -e
 
+# Ensure the following actions are
+# made relative to this file's path
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 # Load utils
-cd "$(dirname "${BASH_SOURCE[0]}")" && source ../utils.sh
+source ../utils.sh
 
 verbose_script
 
