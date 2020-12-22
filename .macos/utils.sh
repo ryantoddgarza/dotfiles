@@ -1,3 +1,5 @@
+#!/bin/bash
+
 validate_sudo() {
   sudo -v
 }
@@ -20,7 +22,7 @@ verbose_script() {
 }
 
 make_scripts_executable() {
-  find $1 -type f -name '*.sh' | xargs chmod +x
+  find $1 -type f | xargs chmod +x
 }
 
 print_spaced() {
