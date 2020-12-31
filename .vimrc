@@ -151,6 +151,12 @@ endfunction
 call EnsureCacheExists()
 set viminfofile=$VIM_CACHE/viminfo
 
+let &undodir = $VIM_CACHE . "/undo"
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
+set undofile
+
 " Section: Filetype settings
 
 autocmd FileType * setlocal nolinebreak
