@@ -1,5 +1,12 @@
 " ~/.vimrc
 
+" Section: Bootstrap
+
+let vimcache = $HOME . "/.cache/vim"
+if !isdirectory(vimcache)
+  call mkdir(vimcache, 'p')
+endif
+
 " Section: Important
 
 set nocompatible
@@ -56,7 +63,12 @@ set confirm
 
 " Section: Editing text
 
-set undodir=$TMPDIR
+let &undodir = vimcache . "/undo"
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
+set undofile
+
 set backspace=2
 set infercase
 set showmatch
@@ -142,20 +154,7 @@ set wildmenu
 
 " Section: Various
 
-function! EnsureCacheExists ()
-  if !isdirectory($VIM_CACHE)
-    call mkdir($VIM_CACHE, 'p')
-  endif
-endfunction
-
-call EnsureCacheExists()
-set viminfofile=$VIM_CACHE/viminfo
-
-let &undodir = $VIM_CACHE . "/undo"
-if !isdirectory(&undodir)
-  call mkdir(&undodir, 'p')
-endif
-set undofile
+set viminfofile=vimcache/viminfo
 
 " Section: Filetype settings
 

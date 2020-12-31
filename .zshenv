@@ -3,10 +3,6 @@
 export TERM="screen-256color"
 export CLICOLOR=1
 
-# vim
-export VIM_DIR="$HOME/.vim"
-export VIM_CACHE="$HOME/.cache/vim"
-
 # zsh
 export ZSH_DIR="$HOME/.zsh"
 export ZSH_CACHE="$HOME/.cache/zsh"
