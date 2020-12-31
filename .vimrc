@@ -75,10 +75,31 @@ set showmatch
 
 " Section: Tabs and indenting
 
-set tabstop=2
-set shiftwidth=2
+function! UseSpaces()
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
+  set smarttab
+endfunction
+
+function! UseTabs()
+  set tabstop=8
+  set shiftwidth=8
+  set noexpandtab
+endfunction
+
+function TabToggle()
+  if &expandtab
+    call UseTabs()
+    echo "Tabs"
+  else
+    call UseSpaces()
+    echo "Spaces"
+  endif
+endfunction
+
+call UseSpaces()
 set shiftround
-set expandtab
 
 " Section: Mapping
 
@@ -107,6 +128,7 @@ nnoremap <silent> <leader>_ :Hexplore<CR>
 nnoremap <silent> <leader>ss :setlocal spell!<CR>
 nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
 nnoremap <silent> <leader>ta :if exists("g:loaded_ale") <Bar> ALEToggle <Bar> endif <CR>
+nnoremap <silent> <leader><TAB> :call TabToggle()<CR>
 
 " Integrating pane switching with tmux
 if exists('$TMUX')
