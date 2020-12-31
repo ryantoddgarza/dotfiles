@@ -29,15 +29,8 @@ set numberwidth=5
 
 " Section: GUI
 
-colorscheme monokai
-
 " Redistribute panes on window resize
 autocmd VimResized * :wincmd =
-
-" Make trailing whitespace obvious
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " No scrollbars
 set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
@@ -45,8 +38,16 @@ set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
 " Section: Syntax, highlighting and spelling
 
 set background=dark
+colorscheme monokai
+
+" Make trailing whitespace obvious
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=1 guibg=darkred
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 syntax on
-highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 
 " Section: Messages and info
 
@@ -154,7 +155,6 @@ set viminfofile=$VIM_CACHE/viminfo
 
 autocmd FileType * setlocal nolinebreak
 autocmd FileType markdown,text,vimwiki setlocal linebreak
-" autocmd FileType markdown,text setlocal spell
 
 " Section: Plugin settings
 
