@@ -2,7 +2,7 @@
 
 " Section: Bootstrap
 
-let vimcache = $HOME . "/.cache/vim"
+let vimcache = $HOME . '/.cache/vim'
 if !isdirectory(vimcache)
   call mkdir(vimcache, 'p')
 endif
@@ -17,7 +17,6 @@ filetype plugin indent on
 " Section: Moving around, searching and patterns
 
 set path+=** " Search recursively
-
 set incsearch
 set ignorecase
 set smartcase
@@ -34,14 +33,6 @@ set lazyredraw
 set number
 set numberwidth=5
 
-" Section: GUI
-
-" Redistribute panes on window resize
-autocmd VimResized * :wincmd =
-
-" No scrollbars
-set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
-
 " Section: Syntax, highlighting and spelling
 
 set background=dark
@@ -56,6 +47,14 @@ autocmd BufWinLeave * call clearmatches()
 
 syntax on
 
+" Section: GUI
+
+" Redistribute panes on window resize
+autocmd VimResized * :wincmd =
+
+" No scrollbars
+set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
+
 " Section: Messages and info
 
 set showcmd
@@ -63,11 +62,11 @@ set confirm
 
 " Section: Editing text
 
-let &undodir = vimcache . "/undo"
+set undofile
+let &undodir = vimcache . '/undo'
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
-set undofile
 
 set backspace=2
 set infercase
@@ -75,35 +74,15 @@ set showmatch
 
 " Section: Tabs and indenting
 
-function! UseSpaces()
-  set tabstop=2
-  set shiftwidth=2
-  set expandtab
-  set smarttab
-endfunction
-
-function! UseTabs()
-  set tabstop=8
-  set shiftwidth=8
-  set noexpandtab
-endfunction
-
-function TabToggle()
-  if &expandtab
-    call UseTabs()
-    echo "Tabs"
-  else
-    call UseSpaces()
-    echo "Spaces"
-  endif
-endfunction
-
-call UseSpaces()
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
 set shiftround
 
 " Section: Mapping
 
-let mapleader=","
+let mapleader=','
 
 set timeoutlen=1200
 set ttimeoutlen=50
@@ -125,36 +104,6 @@ nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
-nnoremap <silent> <leader>ss :setlocal spell!<CR>
-nnoremap <silent> <leader>ts :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
-nnoremap <silent> <leader>ta :if exists("g:loaded_ale") <Bar> ALEToggle <Bar> endif <CR>
-nnoremap <silent> <leader><TAB> :call TabToggle()<CR>
-
-" Integrating pane switching with tmux
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  noremap <C-h> <C-w>h
-  noremap <C-j> <C-w>j
-  noremap <C-k> <C-w>k
-  noremap <C-l> <C-w>l
-endif
 
 " Section: Reading and writing files
 
@@ -178,38 +127,6 @@ set wildmenu
 
 set viminfofile=vimcache/viminfo
 
-" Section: Filetype settings
-
-autocmd FileType * setlocal nolinebreak
-autocmd FileType markdown,text,vimwiki setlocal linebreak
-
 " Section: Plugin settings
 
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_dirhistmax = 0
-let g:airline_theme = 'molokai'
-let g:user_emmet_leader_key = ','
-let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'] }
-let g:vimwiki_global_ext = 0
-let g:vimwiki_auto_header = 1
-let g:vimwiki_toc_header_level = 2
-let g:vimwiki_list = [
-      \   {
-      \     'path': '~/vimwiki',
-      \     'syntax': 'markdown',
-      \     'ext': '.md',
-      \     'auto_toc': 1
-      \   }
-      \ ]
-let g:vimwiki_key_mappings = {
-      \ 'all_maps': 1,
-      \ 'global': 1,
-      \ 'headers': 1,
-      \ 'text_objs': 1,
-      \ 'table_format': 0,
-      \ 'table_mappings': 0,
-      \ 'lists': 1,
-      \ 'links': 1,
-      \ 'html': 0,
-      \ 'mouse': 0,
-      \ }
+source ~/.vim/vimrcs/plugin_settings.vim
