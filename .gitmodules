@@ -47,3 +47,6 @@
 [submodule "/Users/ryantoddgarza/.vim/pack/plugins/start/vader"]
 	path = /Users/ryantoddgarza/.vim/pack/plugins/start/vader
 	url = https://github.com/junegunn/vader.vim.git
+[submodule ".vim/pack/plugins/start/vim-toggle"]
+	path = .vim/pack/plugins/start/vim-toggle
+	url = git@github.com:ryantoddgarza/vim-toggle.git
