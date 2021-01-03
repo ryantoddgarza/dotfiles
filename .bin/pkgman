@@ -20,6 +20,8 @@ update_homebrew() {
   brew update
   echo '› brew upgrade'
   brew upgrade
+  echo '› brew cleanup'
+  brew cleanup
 }
 
 update_npm() {
