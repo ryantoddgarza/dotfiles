@@ -35,85 +35,58 @@ sudo -v
 
 clean_packages() {
   # Homebrew
-  echo 'Homebrew cleanup...'
+  echo '› Homebrew cleanup...'
   brew cleanup
 }
 
 clean_system() {
   # Purge inactive memory
-  echo 'Purging inactive memory...'
+  echo '› Purging inactive memory...'
   sudo purge
-}
-
-delete_all_contents() {
-  confirm_del_msg=$(printf\
-    "\n$(danger_msg "Warning:") This action cannot be undone.\
-    \n- Enter \'DELETE\' to proceed (case sensitive)\
-    \n- Enter anything else to return to prompt\
-    \n  ")
-
-  handle_delete() {
-    glob=$(printf "$1/*")
-    rm -r $glob
-    echo $(success_msg "Deleted all files and directories in $(basename $1)")
-  }
-
-  handle_abort() {
-    echo $(success_msg "Aborted")
-  }
-
-  read -p "$confirm_del_msg" confirm
-  case $confirm in
-    'DELETE' ) handle_delete $1; break;;
-    * ) handle_abort
-  esac
 }
 
 prefer_empty_dir() {
   contents_of_dir=$(ls -l $1 | wc -l)
-  dirty_msg=$(printf "$(warning_msg "Dirty:") There are uneccesary items in $(basename $1).")
-  list_msg=$(success_msg "Contains:")
-  open_msg=$(success_msg "Opened $1 in Finder")
-  skip_msg=$(success_msg "Skipped")
+  dirty_msg=$(printf "$(warning_msg "Dirty:") Uneccesary items in $(basename $1).")
 
   if [ $contents_of_dir -gt 0 ]
   then
-    echo $dirty_msg; echo 'Would you like to'
-    select option in "List files" "Open in Finder" "Skip" "DELETE ALL"
-    do
-      case $option in
-        "List files" ) echo $list_msg; ls $1;;
-        "Open in Finder" ) open $1; echo $open_msg; break;;
-        "Skip" ) echo $skip_msg; break;;
-        "DELETE ALL" ) delete_all_contents $1;
-      esac
-    done
+    echo $dirty_msg
   fi
 }
 
-remove_all_ds_store() {
-  find . -type f -name '*.DS_Store' -not -path '*/node_modules/*' -ls -delete
+delete_system_logs() {
+  find ~/Library/Logs -type f -ls -delete
+}
+
+delete_ds_store() {
+  find . -type f -name '*.DS_Store' \
+    -not -path '*/node_modules/*' \
+    -not -path '*/public/*' \
+    -not -path '*/.cache/*' \
+    -ls -delete
 }
 
 empty_trashes() {
-  echo 'Emptying Trash on all mounted volumes...'
-  sudo rm -rf /Volumes/*/.Trashes
+  # echo 'Emptying Trash on all mounted volumes...'
+  # sudo rm -rf /Volumes/*/.Trashes
   rm -rf $HOME/.Trash/{.[!.],..?,}*
 }
 
 remove_extraneous_files() {
-  echo 'Removing extraneous files...'
+  echo '› Removing extraneous files...'
 
-  remove_all_ds_store
+  delete_system_logs
+  delete_ds_store
   prefer_empty_dir "$HOME/Desktop"
   prefer_empty_dir "$HOME/Downloads"
   empty_trashes
 }
 
-cleanup() {
+main() {
   clean_packages
   clean_system
   remove_extraneous_files
 }
 
-cleanup
+main
