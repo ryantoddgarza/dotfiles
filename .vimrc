@@ -80,6 +80,10 @@ set expandtab
 set smarttab
 set shiftround
 
+" Section: Folding'
+
+set foldmethod=marker
+
 " Section: Mapping
 
 let mapleader=','
