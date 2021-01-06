@@ -8,3 +8,5 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ./softwareupdate.sh
 ./xcode.sh
 ./homebrew.sh
+
+./golang.sh
