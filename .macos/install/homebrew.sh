@@ -11,14 +11,16 @@ source ../utils.sh
 
 verbose_script
 
-is_homebrew_installed() {
+is_installed() {
   which brew &> /dev/null
 }
 
 install_homebrew() {
-  if ! is_homebrew_installed
+  if ! is_installed
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    echo 'exists'
   fi
 }
 

@@ -18,7 +18,9 @@ is_xcode_command_line_tools_installed() {
 install_xcode_command_line_tools() {
   if ! is_xcode_command_line_tools_installed
   then
-    xcode-select --install
+    echo xcode-select --install
+  else
+    echo 'exists'
   fi
 }
 
