@@ -10,4 +10,4 @@ source ../utils.sh
 verbose_script
 
 # macOS software update
-sudo softwareupdate -i -a
+sudo softwareupdate --install --all
