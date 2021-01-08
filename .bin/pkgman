@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Manage global packages installed via a package management system
+# Manage packages installed globally via package management systems
 
 set -e
 
@@ -24,54 +24,47 @@ update_homebrew() {
   brew cleanup
 }
 
-update_npm() {
-  echo '› npm update -g'
-  npm update -g
-}
-
-nvm_excluded_global_binaries() {
-  not_these='node npm npx'
-
-  for file in $not_these
-  do
-    echo "! -name $file"
-  done
-}
-
-nvm_global_binaries() {
-  global_binary_paths="$(find "$NVM_DIR"/versions/*/*/bin/* -type l -wholename '*/bin/*' $(nvm_excluded_global_binaries))"
-
-  if [[ -n "$global_binary_paths" ]]
-  then
-    echo $global_binary_paths | xargs -n 1 basename | sort | uniq
-  fi
-}
-
-nvm_install_global_binaries() {
-cat << EOF
-› npm -g install
-$(nvm_global_binaries)
-EOF
-  npm -g install $(nvm_global_binaries)
+nvm_latest_lts() {
+  nvm list-remote --no-colors | \
+    grep 'Latest LTS' | \
+    tail -1 | \
+    sed 's/.*v/v/g' | \
+    awk '{print $1}'
 }
 
 nvm_install_long_term_support() {
-  echo '› nvm install --lts'
-  nvm install --lts
+  echo '› comparing node versions'
 
-  echo '› nvm alias default node'
-  nvm alias default node
+  current_v=$(nvm current)
+  latest_v=$(nvm_latest_lts)
+
+  if [ $current_v = $latest_v ]
+  then
+    echo "up to date $current_v"
+  else
+    echo 'update available'
+
+    echo '› nvm install 'lts/*' --reinstall-packages-from=current'
+    nvm install 'lts/*' --reinstall-packages-from=current
+
+    echo '› nvm alias default node'
+    nvm alias default node
+  fi
 }
 
 update_nvm() {
-  if [ -s "$NVM_DIR/nvm.sh"  ]
+  if [ -s "$NVM_DIR/nvm.sh" ]
   then
     \. "$NVM_DIR/nvm.sh"
     nvm_install_long_term_support
-    nvm_install_global_binaries
   else
     echo 'failed to source nvm.sh'
   fi
+}
+
+update_npm() {
+  echo '› npm update -g'
+  npm update -g
 }
 
 update_all() {
