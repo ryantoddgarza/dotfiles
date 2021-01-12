@@ -49,6 +49,9 @@ nvm_install_long_term_support() {
 
     echo '› nvm alias default node'
     nvm alias default node
+
+    echo '› nvm use default'
+    nvm use default
   fi
 }
 
