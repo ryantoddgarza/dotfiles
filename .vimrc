@@ -97,12 +97,16 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 inoremap <leader>U <esc>gUawea
 inoremap <leader>u <esc>guawea
+
+nnoremap n nzz
+nnoremap N Nzz
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
