@@ -1,10 +1,15 @@
 autoload -Uz colors && colors
 setopt prompt_subst
+
+# Pre-command
+
 precmd_functions+=( precmd_prompts )
 
 precmd_prompts() {
-  RPROMPT=""
+  RPS1=""
 }
+
+# Color
 
 prompt_color() {
   [[ -n "$1" ]] && print "%{$2%}$1%{$reset_color%}"
@@ -30,6 +35,8 @@ prompt_errorcolor() {
   print "$(prompt_color "$1" "$error_color")"
 }
 
+# PS1
+
 prompt_exit_status() {
   print "%(?:$(prompt_successcolor "➜  "):$(prompt_errorcolor "➜  "))"
 }
@@ -39,7 +46,7 @@ prompt_shortened_path() {
 }
 
 prompt_git_branch() {
-  ref=${$(command git symbolic-ref HEAD 2>/dev/null)#refs/heads/} || return
+  ref=${$(command git symbolic-ref HEAD 2> /dev/null)#refs/heads/} || return
   print "$ref"
 }
 
@@ -57,6 +64,10 @@ prompt_git_dirty() {
   fi
 }
 
+PS1='$(prompt_exit_status)$(prompt_shortened_path)$(prompt_git_dirty) '
+
+# R[ight]PS1
+
 function zle-line-init zle-keymap-select {
    RPS1="${${KEYMAP}/(main|viins)/}"
    zle reset-prompt
@@ -64,5 +75,3 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-PS1='$(prompt_exit_status)$(prompt_shortened_path)$(prompt_git_dirty) '
