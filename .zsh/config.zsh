@@ -1,3 +1,5 @@
+ZSH_CACHE="$HOME/.cache/zsh"
+
 # Vim mode
 bindkey -v
 
