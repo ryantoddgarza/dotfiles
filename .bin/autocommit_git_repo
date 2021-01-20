@@ -1,27 +1,26 @@
 #!/bin/bash
 
+# Basic git commit automation
+
 set -e
 
+repository="$1"
+
 cd_to_repo() {
-  repo_path="$HOME/vimwiki"
-  cd "$repo_path"
+  cd "$repository"
 }
 
 autocommit_if_branch_is_dirty() {
-  if [[ $(command git status --porcelain) == '' ]]
+  if [[ ! $(command git status --porcelain) == '' ]]
   then
-    exit
-  else
     git add --all
     git commit --message="autocommit $(date +'%s')"
   fi
 }
 
 push_if_remote_exists() {
-  if [[ ! $(command git remote) ]]
+  if [[ $(command git remote) ]]
   then
-    exit
-  else
     git push
   fi
 }
