@@ -24,47 +24,6 @@ update_homebrew() {
   brew cleanup
 }
 
-nvm_latest_lts() {
-  nvm list-remote --no-colors | \
-    grep 'Latest LTS' | \
-    tail -1 | \
-    sed 's/.*v/v/g' | \
-    awk '{print $1}'
-}
-
-nvm_install_long_term_support() {
-  echo '› comparing node versions'
-
-  current_v=$(nvm current)
-  latest_v=$(nvm_latest_lts)
-
-  if [ $current_v = $latest_v ]
-  then
-    echo "up to date $current_v"
-  else
-    echo 'update available'
-
-    echo '› nvm install 'lts/*' --reinstall-packages-from=current'
-    nvm install 'lts/*' --reinstall-packages-from=current
-
-    echo '› nvm alias default node'
-    nvm alias default node
-
-    echo '› nvm use default'
-    nvm use default
-  fi
-}
-
-update_nvm() {
-  if [ -s "$NVM_DIR/nvm.sh" ]
-  then
-    \. "$NVM_DIR/nvm.sh"
-    nvm_install_long_term_support
-  else
-    echo 'failed to source nvm.sh'
-  fi
-}
-
 update_npm() {
   echo '› npm update -g'
   npm update -g
@@ -72,11 +31,10 @@ update_npm() {
 
 update_all() {
   update_homebrew
-  update_nvm
   update_npm
 }
 
-list_packages() {
+list_all() {
   echo 'Homebrew:'
   brew ls
   echo ''
@@ -90,12 +48,12 @@ while getopts $optstring opt
 do
   case $opt in
     h ) usage ;;
-    l ) list_packages ;;
+    l ) list_all ;;
     u ) update_all ;;
     ? )
       echo "unknown option: -$OPTARG"
       usage
-      exit 2
+      exit 1
       ;;
   esac
 done
@@ -103,5 +61,5 @@ done
 if ((OPTIND == 1))
 then
   usage
-  exit 2
+  exit 1
 fi
