@@ -37,6 +37,7 @@ set numberwidth=5
 
 set background=dark
 colorscheme monokai
+set colorcolumn=81
 
 " Make trailing whitespace obvious
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=1 guibg=darkred
