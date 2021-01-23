@@ -1,7 +1,8 @@
 [alias]
 	a = add
 	b = branch
-	c = commit
+	cl = clone
+	cm = commit
 	co = checkout
 	com = checkout master
 	d = diff
