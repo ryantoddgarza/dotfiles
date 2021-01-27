@@ -134,7 +134,7 @@ set wildmenu
 
 " Section: Various
 
-set viminfofile=vimcache/viminfo
+let &viminfofile = vimcache . '/viminfo'
 
 " Section: Plugin settings
 
