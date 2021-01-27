@@ -28,3 +28,14 @@ make_scripts_executable() {
 print_spaced() {
   printf "\n$1\n\n"
 }
+
+install_brew_package() {
+  is_installed=$(brew info $1 &> /dev/null)
+
+  if ! $is_installed
+  then
+    brew install $@
+  else
+    echo "$1 exists"
+  fi
+}
