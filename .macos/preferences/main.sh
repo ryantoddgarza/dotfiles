@@ -11,5 +11,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 # Preferences
 ./finder.sh
 ./input_devices.sh
+./network.sh
 ./power_management.sh
 ./screencapture.sh
