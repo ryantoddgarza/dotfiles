@@ -29,10 +29,13 @@ print_spaced() {
   printf "\n$1\n\n"
 }
 
-install_brew_package() {
-  is_installed=$(brew info $1 &> /dev/null)
+brew_pkg_is_instaled() {
+  brew list --formula --versions $1 &>/dev/null
+  brew list --cask --versions $1 &>/dev/null
+}
 
-  if ! $is_installed
+install_brew_package() {
+  if [ ! $brew_pkg_is_installed ]
   then
     brew install $@
   else

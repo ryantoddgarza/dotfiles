@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
@@ -8,5 +10,10 @@ source ../utils.sh
 
 verbose_script
 
-# macOS software update
-sudo softwareupdate --install --all
+main() {
+  install_brew_package pandoc
+  install_brew_package rsync
+  install_brew_package tree
+}
+
+main

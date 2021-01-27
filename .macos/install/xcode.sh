@@ -2,8 +2,7 @@
 
 set -e
 
-# Ensure the following actions are
-# made relative to this file's path
+# Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
@@ -18,7 +17,7 @@ is_xcode_command_line_tools_installed() {
 install_xcode_command_line_tools() {
   if ! is_xcode_command_line_tools_installed
   then
-    echo xcode-select --install
+    xcode-select --install
   else
     echo 'exists'
   fi

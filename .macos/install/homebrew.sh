@@ -2,8 +2,7 @@
 
 set -e
 
-# Ensure the following actions are
-# made relative to this file's path
+# Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils

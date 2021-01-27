@@ -1,12 +1,21 @@
 #!/bin/bash
 
-# Ensure the following actions are
-# made relative to this file's path
+# Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-# Install
+# OS
 ./softwareupdate.sh
+
+# Homebrew + packages
 ./xcode.sh
 ./homebrew.sh
 
-./golang.sh
+./zsh.sh
+./tmux.sh
+./vim.sh
+./git.sh
+./development.sh
+./deployment.sh
+./productivity.sh
+./apps.sh
+./fonts.sh
