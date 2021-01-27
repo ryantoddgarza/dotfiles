@@ -9,3 +9,4 @@ path+=$HOME/.bin
 
 # Cleanup ~/
 export LESSHISTFILE="-"
+export NODE_REPL_HISTORY="$HOME/.cache/node_repl_history"
