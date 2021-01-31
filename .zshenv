@@ -5,7 +5,7 @@ export TERM="screen-256color"
 
 # Path
 typeset -U path
-path+=$HOME/.bin
+path+=$HOME/.local/bin
 
 # Cleanup ~/
 export LESSHISTFILE="-"
