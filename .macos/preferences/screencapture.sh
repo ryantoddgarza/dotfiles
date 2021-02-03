@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Screencapture directory
-screencapture_dir="${HOME}/Pictures/Screencapture"
+screencapture_dir="$HOME/Pictures/Screencapture"
 
 # Create screencapture directory if it doesn't exist
 mkdir -p $screencapture_dir
