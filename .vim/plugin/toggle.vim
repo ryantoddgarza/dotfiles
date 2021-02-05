@@ -1,7 +1,3 @@
-" toggle.vim - Toggle stuff
-" Author:   Ryan Todd Garza <https://ryantoddgarza.com/>
-" Version:      0.1
-
 " Ale
 function! ToggleAle()
   if exists("g:loaded_ale")
@@ -49,10 +45,10 @@ command! -bar ToggleSpell :call ToggleSpell()
 command! -bar ToggleLexical :call ToggleLexical()
 command! -bar ToggleTabs :call ToggleTabs()
 
-nnoremap <silent> <Plug>toggle_ale :ToggleAle<Return>
-nnoremap <silent> <Plug>toggle_spell :ToggleSpell<Return>
-nnoremap <silent> <Plug>toggle_lexical :ToggleLexical<Return>
-nnoremap <silent> <Plug>toggle_tabs :ToggleTabs<Return>
+nnoremap <silent> <Plug>toggle_ale :ToggleAle<CR>
+nnoremap <silent> <Plug>toggle_spell :ToggleSpell<CR>
+nnoremap <silent> <Plug>toggle_lexical :ToggleLexical<CR>
+nnoremap <silent> <Plug>toggle_tabs :ToggleTabs<CR>
 
 let g:toggle_prefix = 'tg'
 
