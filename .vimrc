@@ -69,7 +69,6 @@ if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
 
-set backspace=2
 set infercase
 set showmatch
 
@@ -94,15 +93,7 @@ set ttimeoutlen=50
 
 noremap j gj
 noremap k gk
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
 
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 inoremap <leader>U <esc>gUawea
 inoremap <leader>u <esc>guawea
 
