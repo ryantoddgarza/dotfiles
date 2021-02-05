@@ -123,6 +123,10 @@ set wildignore+=*.o,*~,*.pyc,*/.DS_Store
 set wildignore+=*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*
 set wildmenu
 
+" Section: Multi-byte characters
+
+set encoding=utf-8
+
 " Section: Various
 
 let &viminfofile = vimcache . '/viminfo'
