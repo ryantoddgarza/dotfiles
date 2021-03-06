@@ -9,7 +9,7 @@ let g:airline_theme = 'molokai'
 let g:user_emmet_leader_key = ','
 
 " Ale
-let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'] }
+let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'], 'python': ['pylint'] }
 
 " Vimwiki
 let g:vimwiki_global_ext = 0
