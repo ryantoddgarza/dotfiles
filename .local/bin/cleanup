@@ -45,6 +45,19 @@ clean_system() {
   sudo purge
 }
 
+dangerously_delete_files() {
+  echo '› Removing extraneous files...'
+
+  find $HOME/Library/Logs -type f -delete
+  find . \( -name node_modules \) -prune -type f -name *.DS_Store -delete
+}
+
+empty_trashes() {
+  # echo 'Emptying Trash on all mounted volumes...'
+  # sudo rm -rf /Volumes/*/.Trashes
+  rm -rf $HOME/.Trash/{.[!.],..?,}*
+}
+
 prefer_empty_dir() {
   contents_of_dir=$(ls -l $1 | wc -l)
   dirty_msg=$(printf "$(warning_msg "Dirty:") Uneccesary items in $(basename $1).")
@@ -55,38 +68,13 @@ prefer_empty_dir() {
   fi
 }
 
-delete_system_logs() {
-  find ~/Library/Logs -type f -ls -delete
-}
-
-delete_ds_store() {
-  find . -type f -name '*.DS_Store' \
-    -not -path '*/node_modules/*' \
-    -not -path '*/public/*' \
-    -not -path '*/.cache/*' \
-    -ls -delete
-}
-
-empty_trashes() {
-  # echo 'Emptying Trash on all mounted volumes...'
-  # sudo rm -rf /Volumes/*/.Trashes
-  rm -rf $HOME/.Trash/{.[!.],..?,}*
-}
-
-remove_extraneous_files() {
-  echo '› Removing extraneous files...'
-
-  delete_system_logs
-  delete_ds_store
-  prefer_empty_dir "$HOME/Desktop"
-  prefer_empty_dir "$HOME/Downloads"
-  empty_trashes
-}
-
 main() {
   clean_packages
   clean_system
-  remove_extraneous_files
+  dangerously_delete_files
+  empty_trashes
+  prefer_empty_dir "$HOME/Desktop"
+  prefer_empty_dir "$HOME/Downloads"
 }
 
 main
