@@ -25,7 +25,7 @@ alias v="vim ."
 
 # git
 alias g="git"
-alias dotf="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dotf="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # folders
 alias ongoing="cd ~/Code/Ongoing"
