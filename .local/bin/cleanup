@@ -71,7 +71,7 @@ prefer_empty_dir() {
 main() {
   clean_packages
   clean_system
-  dangerously_delete_files
+  dangerously_delete_files || true
   empty_trashes
   prefer_empty_dir "$HOME/Desktop"
   prefer_empty_dir "$HOME/Downloads"
