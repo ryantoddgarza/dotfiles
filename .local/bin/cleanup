@@ -11,70 +11,50 @@ exit_trap() {
 
 trap exit_trap EXIT
 
-# Colors
-reset_fg='\033[0m'
-success_fg='\033[34m'
-warn_fg='\033[33m'
-danger_fg='\033[31m'
-
-# Messages
-success_msg() {
-  printf "${success_fg}$1${reset_fg}"
-}
-
-warning_msg() {
-  printf "${warn_fg}$1${reset_fg}"
-}
-
-danger_msg() {
-  printf "${danger_fg}$1${reset_fg}"
-}
-
-# Immediately validate sudo user
+# Validate sudo user
 sudo -v
 
+clean_files() {
+  echo '› clean_files'
+  dangerously_delete_files || true
+  prefer_empty_dir "$HOME/Desktop"
+  prefer_empty_dir "$HOME/Downloads"
+}
+
 clean_packages() {
-  # Homebrew
-  echo '› Homebrew cleanup...'
+  echo '› clean_packages'
   brew cleanup
 }
 
 clean_system() {
-  # Purge inactive memory
-  echo '› Purging inactive memory...'
+  echo '› clean_system'
   sudo purge
 }
 
 dangerously_delete_files() {
-  echo '› Removing extraneous files...'
-
   find $HOME/Library/Logs -type f -delete
   find . \( -name node_modules \) -prune -type f -name *.DS_Store -delete
 }
 
-empty_trashes() {
-  # echo 'Emptying Trash on all mounted volumes...'
-  # sudo rm -rf /Volumes/*/.Trashes
+empty_trash() {
+  echo '› empty_trash'
   rm -rf $HOME/.Trash/{.[!.],..?,}*
 }
 
 prefer_empty_dir() {
   contents_of_dir=$(ls -l $1 | wc -l)
-  dirty_msg=$(printf "$(warning_msg "Dirty:") Uneccesary items in $(basename $1).")
 
   if [ $contents_of_dir -gt 0 ]
   then
-    echo $dirty_msg
+    echo "dirty: Unnecessary items in $(basename $1)"
   fi
 }
 
 main() {
   clean_packages
   clean_system
-  dangerously_delete_files || true
-  empty_trashes
-  prefer_empty_dir "$HOME/Desktop"
-  prefer_empty_dir "$HOME/Downloads"
+  clean_files
+  empty_trash
 }
 
 main
