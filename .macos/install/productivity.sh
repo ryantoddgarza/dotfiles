@@ -14,6 +14,7 @@ main() {
   install_brew_package pandoc
   install_brew_package rsync
   install_brew_package tree
+  install_brew_package cloc
 }
 
 main
