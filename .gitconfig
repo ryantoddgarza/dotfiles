@@ -12,6 +12,7 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
+	ignorecase = false
 [credential]
 	helper = osxkeychain
 [http]
