@@ -6,6 +6,7 @@ export TERM="screen-256color"
 # Path
 typeset -U path
 path+=$HOME/.local/bin
+path=($HOME/.node-versions/current/bin $path)
 
 # Cleanup ~/
 export LESSHISTFILE="-"
