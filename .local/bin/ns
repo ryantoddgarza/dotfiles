@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # description: Manage node versions
-# version: 0.1.0 UNSTABLE UNTIL v1
+# version: 0.1.1 UNSTABLE UNTIL v1
 # author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 # Setup
