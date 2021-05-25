@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# description: Manage node versions
+# version: 0.1.0 UNSTABLE UNTIL v1
+# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+
+# Setup
+# Add the `bin_links` value to PATH
+
+# Do not set `bin_links` to ANY shared directory
+# such as `/usr/local/bin`. The `clean_bin_links`
+# function currently CLEARS THE ENTIRE DIRECTORY!
+bin_links=$HOME/.node-versions/current/bin
+
+# Set to your system
+system=darwin-x64
+
+# Downloaded version location
+directory=$HOME/.node-versions
+
+usage() {
+cat << EOF
+usage: $(basename $0) [command]
+
+commands:
+  help                 Show this help message
+  install <version>    Install node version
+  use <version>        Use node version
+EOF
+}
+
+install() {
+  version=$1
+  package=node-v$version-$system.tar.xz
+  url=https://nodejs.org/download/release/v$version/$package
+
+  curl --fail --create-dirs $url --output $directory/$package
+  tar -xf $directory/$package -C $directory
+  rm $directory/$package
+}
+
+clean_bin_links() {
+  find $bin_links -not -type d -exec rm {} \;
+}
+
+create_symlinks() {
+  version=$1
+
+  find "$directory/node-v$version-$system/bin" -depth 1 \
+    -exec ln -sf {} $bin_links \;
+}
+
+use() {
+  version=$1
+
+  mkdir -p $bin_links
+  clean_bin_links
+  create_symlinks $version
+}
+
+case $1 in
+  help) usage ;;
+  install) install $2 ;;
+  use) use $2 ;;
+  *) usage && exit 2 ;;
+esac
