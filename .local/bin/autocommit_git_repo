@@ -4,14 +4,14 @@
 
 set -e
 
-repository="$1"
+dir_path="$1"
 
 cd_to_repo() {
-  cd "$repository"
+  cd "$dir_path"
 }
 
 autocommit_if_branch_is_dirty() {
-  if [[ ! $(command git status --porcelain) == '' ]]
+  if [[ $(git status --porcelain) ]]
   then
     git add --all
     git commit --message="autocommit $(date +'%s')"
@@ -19,7 +19,7 @@ autocommit_if_branch_is_dirty() {
 }
 
 push_if_remote_exists() {
-  if [[ $(command git remote) ]]
+  if [[ $(git remote) ]]
   then
     git push
   fi
