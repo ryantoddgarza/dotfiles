@@ -30,7 +30,6 @@ install_python() {
 
 main() {
   install_golang
-  install_hugo
   install_mongodb_community
   install_python
 }
