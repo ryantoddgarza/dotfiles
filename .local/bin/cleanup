@@ -38,7 +38,7 @@ dangerously_delete_files() {
 
 empty_trash() {
   echo '› empty_trash'
-  rm -rf $HOME/.Trash/{.[!.],..?,}*
+  sudo rm -rf $HOME/.Trash/{.[!.],..?,}*
 }
 
 prefer_empty_dir() {
