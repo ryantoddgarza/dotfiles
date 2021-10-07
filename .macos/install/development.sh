@@ -15,10 +15,6 @@ install_golang() {
   mkdir -p $HOME/go/{bin,src,pkg}
 }
 
-install_hugo() {
-  install_brew_package hugo
-}
-
 install_mongodb_community() {
   brew tap mongodb/brew
   install_brew_package mongodb-community
