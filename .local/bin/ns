@@ -24,6 +24,7 @@ usage: $(basename $0) [command]
 
 commands:
   help                 Show this help message
+  list                 List installed versions
   install <version>    Install node version
   use <version>        Use node version
 EOF
@@ -37,6 +38,15 @@ install() {
   curl --fail --create-dirs $url --output $directory/$package
   tar -xf $directory/$package -C $directory
   rm $directory/$package
+}
+
+clean_package_name() {
+ sed 's/node-v//' | sed "s/-$system//"
+}
+
+list() {
+  cd $version_dir
+  ls -1 | grep node-v | clean_package_name
 }
 
 clean_bin_links() {
@@ -60,6 +70,7 @@ use() {
 
 case $1 in
   help) usage ;;
+  list) list ;;
   install) install $2 ;;
   use) use $2 ;;
   *) usage && exit 2 ;;
