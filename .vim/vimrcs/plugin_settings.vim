@@ -20,6 +20,7 @@ let g:vimwiki_list = [
       \     'path': '~/vimwiki/src/vimwiki',
       \     'syntax': 'markdown',
       \     'ext': '.md',
+      \     'links_space_char': '-',
       \     'auto_toc': 1
       \   }
       \ ]
