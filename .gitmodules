@@ -50,3 +50,6 @@
 [submodule ".vim/pack/plugins/start/vim-toggle"]
 	path = .vim/pack/plugins/start/vim-toggle
 	url = https://github.com/ryantoddgarza/vim-toggle.git
+[submodule ".vim/pack/plugins/start/vim-hardtime"]
+	path = .vim/pack/plugins/start/vim-hardtime
+	url = https://github.com/takac/vim-hardtime.git
