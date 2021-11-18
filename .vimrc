@@ -2,9 +2,9 @@
 
 " Section: Bootstrap
 
-let vimcache = $HOME . '/.cache/vim'
-if !isdirectory(vimcache)
-  call mkdir(vimcache, 'p')
+let cachedir = $HOME . '/.cache/vim'
+if !isdirectory(cachedir)
+  call mkdir(cachedir, 'p')
 endif
 
 " Section: Important
@@ -64,7 +64,7 @@ set confirm
 " Section: Editing text
 
 set undofile
-let &undodir = vimcache . '/undo'
+let &undodir = cachedir . '/undo'
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
@@ -129,7 +129,7 @@ set encoding=utf-8
 
 " Section: Various
 
-let &viminfofile = vimcache . '/viminfo'
+let &viminfofile = cachedir . '/viminfo'
 
 " Section: Plugin settings
 
