@@ -101,7 +101,6 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>w :w<CR>
 nnoremap <leader>dtw :%s/\s\+$<CR>
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
