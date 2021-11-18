@@ -1,15 +1,17 @@
-" Override vimrc
+" Disable backspace
+" [insert]
 set backspace=0
+" [normal, visual, select, operator-pending]
+noremap <backspace> <nop>
 
-" Disable arrow keys in normal
-" operator-pending, select, and visual modes
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" Disable arrow keys in insert mode
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+" Disable arrow keys
+" [normal, visual, select, operator-pending]
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+" [insert]
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
