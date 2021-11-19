@@ -97,9 +97,6 @@ noremap k gk
 " Center line vertically when repeating a search.
 nnoremap n nzz
 nnoremap N Nzz
-" Exit insert mode after creating a new line.
-nnoremap o o<esc>
-nnoremap O O<esc>
 " Manage `.vimrc`.
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
@@ -108,9 +105,6 @@ nnoremap <leader>dtw :%s/\s\+$<CR>
 " Quick window splits.
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
-" Make current word upper/lower case from insert mode.
-inoremap <leader>U <esc>gUawea
-inoremap <leader>u <esc>guawea
 
 " Section: Reading and writing files
 
