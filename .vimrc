@@ -97,6 +97,9 @@ noremap k gk
 " Center line vertically when repeating a search.
 nnoremap n nzz
 nnoremap N Nzz
+" Exit insert mode after creating a new line.
+nnoremap o o<esc>
+nnoremap O O<esc>
 " Manage `.vimrc`.
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
