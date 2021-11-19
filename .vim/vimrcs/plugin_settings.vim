@@ -11,6 +11,9 @@ let g:user_emmet_leader_key = ','
 " Ale
 let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'], 'python': ['pylint'] }
 
+" Molasses
+let g:molasses_wait = 400
+
 " Vimwiki
 let g:vimwiki_global_ext = 0
 let g:vimwiki_auto_header = 1
