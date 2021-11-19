@@ -7,6 +7,8 @@ let g:airline_theme = 'molokai'
 
 " Emmet
 let g:user_emmet_leader_key = ','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 
 " Ale
 let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'], 'python': ['pylint'] }
