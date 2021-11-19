@@ -91,19 +91,23 @@ let mapleader=','
 set timeoutlen=1200
 set ttimeoutlen=50
 
+" Always move by display lines (wrapped).
 noremap j gj
 noremap k gk
-
-inoremap <leader>U <esc>gUawea
-inoremap <leader>u <esc>guawea
-
+" Center line vertically when repeating a search.
 nnoremap n nzz
 nnoremap N Nzz
+" Manage `.vimrc`.
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
+" Delete all trailing whitespace in file.
 nnoremap <leader>dtw :%s/\s\+$<CR>
+" Quick window splits.
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
+" Make current word upper/lower case from insert mode.
+inoremap <leader>U <esc>gUawea
+inoremap <leader>u <esc>guawea
 
 " Section: Reading and writing files
 
