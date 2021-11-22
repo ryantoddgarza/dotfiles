@@ -47,3 +47,6 @@
 [submodule ".vim/pack/plugins/start/vim-toggle"]
 	path = .vim/pack/plugins/start/vim-toggle
 	url = https://github.com/ryantoddgarza/vim-toggle.git
+[submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
+	path = .vim/pack/plugins/start/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
