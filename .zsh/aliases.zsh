@@ -30,11 +30,8 @@ alias dotf="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # folders
 alias ongoing="cd ~/Code/Ongoing"
 
-# urls
+# applications
 alias chrome="open -a 'Google Chrome'"
-alias gcal="chrome https://calendar.google.com/"
-alias gmail="chrome https://mail.google.com/"
-alias ganl="chrome https://analytics.google.com/"
 
 # misc
 alias bsserve="browser-sync start -sf ."
