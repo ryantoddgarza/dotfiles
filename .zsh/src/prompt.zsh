@@ -1,4 +1,8 @@
-autoload -Uz colors && colors
+# Enable ANSI color names
+autoload -Uz colors
+colors
+
+# Enable prompt expansion
 setopt prompt_subst
 
 # Pre-command
@@ -35,7 +39,7 @@ prompt_errorcolor() {
   print "$(prompt_color "$1" "$error_color")"
 }
 
-# PS1
+# Prompt string 1
 
 prompt_exit_status() {
   print "%(?:$(prompt_successcolor "➜  "):$(prompt_errorcolor "➜  "))"
@@ -66,7 +70,7 @@ prompt_git_dirty() {
 
 PS1='$(prompt_exit_status)$(prompt_shortened_path)$(prompt_git_dirty) '
 
-# R[ight]PS1
+# Right prompt string 1
 
 function zle-line-init zle-keymap-select {
    RPS1="${${KEYMAP}/(main|viins)/}"
