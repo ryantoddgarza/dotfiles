@@ -1,3 +1,3 @@
-" unset new vim9 commentstrng
+" Unset new vim9 commentstrng
 " https://vimhelp.org/vim9.txt.html#vim9-differences
-set commentstring=\"\ %s
+setlocal commentstring=\"\ %s
