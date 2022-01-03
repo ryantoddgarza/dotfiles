@@ -21,10 +21,6 @@ verbose_script() {
   trap exit_trap EXIT
 }
 
-make_scripts_executable() {
-  find $1 -type f | xargs chmod +x
-}
-
 print_spaced() {
   printf "\n$1\n\n"
 }
