@@ -14,7 +14,7 @@ is_installed() {
   which brew &> /dev/null
 }
 
-install_homebrew() {
+install() {
   if ! is_installed
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -23,13 +23,24 @@ install_homebrew() {
   fi
 }
 
-main() {
-  install_homebrew
-
-  brew analytics off
+update() {
+  echo ''
+  echo 'updating homebrew...'
   brew update
   brew upgrade
   brew cleanup
+}
+
+configure() {
+  echo ''
+  echo 'configuring homebrew...'
+  brew analytics off
+}
+
+main() {
+  install
+  update
+  configure
 }
 
 main
