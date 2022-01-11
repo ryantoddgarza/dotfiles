@@ -6,7 +6,7 @@ set -e
 
 usage() {
 cat << EOF
-usage: pkgman [options]
+usage: $(basename $0) [options]
 
 options:
   -h    Show this help message
