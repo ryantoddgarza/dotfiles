@@ -11,7 +11,7 @@ source ../utils.sh
 verbose_script
 
 main() {
-  install_brew_package heroku
+  return
 }
 
 main
