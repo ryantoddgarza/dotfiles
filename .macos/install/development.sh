@@ -10,11 +10,6 @@ source ../utils.sh
 
 verbose_script
 
-install_golang() {
-  install_brew_package golang
-  mkdir -p $HOME/go/{bin,src,pkg}
-}
-
 install_mongodb_community() {
   brew tap mongodb/brew
   install_brew_package mongodb-community
@@ -25,7 +20,6 @@ install_python() {
 }
 
 main() {
-  install_golang
   install_mongodb_community
   install_python
 }
