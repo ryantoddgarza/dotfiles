@@ -15,7 +15,7 @@ EOF
 }
 
 source_scripts() {
-  for file in ~/.macos/{set-defaults.sh,install.sh}
+  for file in ~/.macos/{init-dotfiles.sh,set-defaults.sh,install.sh}
   do
     source "$file"
   done
