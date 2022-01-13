@@ -10,8 +10,17 @@ source ../utils.sh
 
 verbose_script
 
-main() {
+install() {
   install_brew_package vim
+}
+
+configure() {
+  git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --init
+}
+
+main() {
+  install
+  configure
 }
 
 main
