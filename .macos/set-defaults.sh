@@ -13,7 +13,7 @@ main() {
   validate_sudo
 
   # Set defaults
-  ./preferences/main.sh
+  ./defaults/main.sh
 }
 
 main
