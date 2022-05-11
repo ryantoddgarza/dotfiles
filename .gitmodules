@@ -50,6 +50,3 @@
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
-[submodule ".vim/pack/plugins/start/vim-flake8"]
-	path = .vim/pack/plugins/start/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
