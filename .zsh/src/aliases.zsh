@@ -24,4 +24,4 @@ alias txks="tmux kill-session -t"
 alias txat="tmux attach -t"
 
 # File system
-alias ongoing="cd ~/Code/Ongoing"
+alias code="cd ~/Code"
