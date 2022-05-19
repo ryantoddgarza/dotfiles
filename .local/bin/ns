@@ -1,77 +1,126 @@
 #!/bin/bash
 
+# Node Swap
 # description: Manage node versions
-# version: 0.1.1 UNSTABLE UNTIL v1
+# version: 0.2.0
 # author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
-# Setup
-# Add the `bin_links` value to PATH
-
-# Do not set `bin_links` to ANY shared directory
-# such as `/usr/local/bin`. The `clean_bin_links`
-# function currently CLEARS THE ENTIRE DIRECTORY!
-bin_links=$HOME/.node-versions/current/bin
-
 # Set to your system
-system=darwin-x64
+NS_SYSTEM=darwin-x64
 
-# Downloaded version location
-version_dir=$HOME/.node-versions
+NS_VERSION_DIR=$HOME/.node-versions
 
-usage() {
-cat << EOF
-usage: $(basename $0) [command]
+NS_CURRENT_NODE_PATH=$NS_VERSION_DIR/current/bin
 
-commands:
-  help                 Show this help message
-  list                 List installed versions
-  install <version>    Install node version
-  use <version>        Use node version
-EOF
+NS_CURRENT_VERSION_FILE=$NS_VERSION_DIR/current/version.txt
+
+ns_echo() {
+  printf %s\\n "$*" 2>/dev/null
 }
 
-install() {
-  version=$1
-  package=node-v$version-$system.tar.xz
-  url=https://nodejs.org/download/release/v$version/$package
-
-  curl --fail --create-dirs $url --output $version_dir/$package
-  tar -xf $version_dir/$package -C $version_dir
-  rm $version_dir/$package
+ns_err() {
+  >&2 ns_echo "$@"
 }
 
-clean_package_name() {
- sed 's/node-v//' | sed "s/-$system//"
+ns_get_version_dir() {
+  local version=$1
+  ns_echo "$NS_VERSION_DIR/node-v$version-$NS_SYSTEM"
 }
 
-list() {
-  cd $version_dir
-  ls -1 | grep node-v | clean_package_name
+ns_dir_exists() {
+  [[ -d "$1" ]] && return 0
+  return 1
 }
 
-clean_bin_links() {
-  find $bin_links -not -type d -exec rm {} \;
+ns_version_is_installed() {
+  ns_dir_exists $(ns_get_version_dir $1)
 }
 
-create_symlinks() {
-  version=$1
+ns_remove_links() {
+  local ns_current_version=$(cat $NS_CURRENT_VERSION_FILE)
 
-  find "$version_dir/node-v$version-$system/bin" -depth 1 \
-    -exec ln -sf {} $bin_links \;
+  for file in "$ns_current_version/bin"; do
+    if [[ -f $file ]]; then
+      rm $NS_CURRENT_NODE_PATH/$(basename "$file")
+    fi
+  done
 }
 
-use() {
-  version=$1
+ns_create_links() {
+  local version=$1
 
-  mkdir -p $bin_links
-  clean_bin_links
-  create_symlinks $version
+  find "$(ns_get_version_dir $version)/bin" -depth 1 \
+    -exec ln -sf {} $NS_CURRENT_NODE_PATH \;
+}
+
+ns_usage() {
+  ns_echo 'usage: ns [command]'
+  ns_echo
+  ns_echo 'commands:'
+  ns_echo '  help                 Show this help message'
+  ns_echo '  list                 List installed versions'
+  ns_echo '  install <version>    Install node version'
+  ns_echo '  use <version>        Use node version'
+}
+
+ns_install() {
+  local version=$1
+  local package=node-v$version-$NS_SYSTEM.tar.xz
+  local url=https://nodejs.org/download/release/v$version/$package
+
+  if [ -z "$1" ]; then
+    ns_err "version is required."
+    return 1
+  fi
+
+  curl --fail --create-dirs $url --output $NS_VERSION_DIR/$package
+  tar -xf $NS_VERSION_DIR/$package -C $NS_VERSION_DIR
+  rm $NS_VERSION_DIR/$package
+  return 0
+}
+
+ns_list() {
+  if ! $(ns_dir_exists $NS_VERSION_DIR); then
+    ns_err "no installed versions found."
+    return 1
+  fi
+
+  versions=$(ls -1 $NS_VERSION_DIR | grep node-v | sed 's/node-v//' | sed "s/-$NS_SYSTEM//")
+
+  if [[ -z $versions ]]; then
+    ns_err "no installed versions found."
+    return 1
+  fi
+
+  printf %s\\n $versions
+  return 0
+}
+
+ns_use() {
+  local version=$1
+
+  if [ -z "$1" ]; then
+    ns_err "version is required."
+    return 1
+  fi
+
+  if ! $(ns_version_is_installed $version); then
+    ns_err "node $version is not installed."
+    return 1
+  fi
+
+  mkdir -p $NS_CURRENT_NODE_PATH
+  touch $NS_CURRENT_VERSION_FILE
+  ns_echo $version | cat > $NS_CURRENT_VERSION_FILE
+  ns_remove_links
+  ns_create_links $version
+  return 0
 }
 
 case $1 in
-  help) usage ;;
-  list) list ;;
-  install) install $2 ;;
-  use) use $2 ;;
-  *) usage && exit 2 ;;
+  help) ns_usage ;;
+  list) ns_list ;;
+  install) ns_install $2 ;;
+  use) ns_use $2 ;;
+  *) ns_usage && exit 2 ;;
 esac
