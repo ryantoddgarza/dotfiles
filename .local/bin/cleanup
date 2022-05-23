@@ -32,7 +32,7 @@ clean_system() {
 }
 
 dangerously_delete_files() {
-  find $HOME/Library/Logs -type f -delete
+  rm -rf $HOME/Library/Logs/*
   find $HOME -type f -name '.DS_Store' -delete
 }
 
