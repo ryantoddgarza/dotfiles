@@ -1,5 +1,5 @@
-# ENVIRONMENT
 *.env
+.zsh/custom.zsh
 
 # VIM
 # Swap
