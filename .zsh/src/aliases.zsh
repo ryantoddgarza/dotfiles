@@ -22,6 +22,3 @@ alias txls="tmux list-sessions"
 alias txns="tmux new-session -s"
 alias txks="tmux kill-session -t"
 alias txat="tmux attach -t"
-
-# File system
-alias code="cd ~/Code"
