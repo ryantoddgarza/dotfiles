@@ -33,7 +33,7 @@ clean_system() {
 
 dangerously_delete_files() {
   find $HOME/Library/Logs -type f -delete
-  find . -type d \( -name node_modules \) -prune -false -o -type f -name '*.DS_Store' -delete
+  find $HOME -type f -name '.DS_Store' -delete
 }
 
 empty_trash() {
