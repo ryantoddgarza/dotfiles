@@ -19,7 +19,8 @@ install_xcode_command_line_tools() {
   then
     xcode-select --install
   else
-    echo 'exists'
+    xcode_version=$(xcode-select -version | awk '{print ($3+0)}')
+    echo "xcode-select $xcode_version is already installed."
   fi
 }
 

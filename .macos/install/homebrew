@@ -19,7 +19,8 @@ install() {
   then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
-    echo 'exists'
+    homebrew_version=$(brew --version | head -1 | awk '{print $2}')
+    echo "homebrew $homebrew_version is already installed."
   fi
 }
 
