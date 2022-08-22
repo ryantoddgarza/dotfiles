@@ -50,6 +50,6 @@
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
-[submodule "/Users/ryantoddgarza/.vim/pack/plugins/start/vim-dispatch"]
-	path = /Users/ryantoddgarza/.vim/pack/plugins/start/vim-dispatch
+[submodule ".vim/pack/plugins/start/vim-dispatch"]
+	path = .vim/pack/plugins/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
