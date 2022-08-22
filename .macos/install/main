@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Actions made relative to this file's path
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# OS
+./softwareupdate
+
+# Homebrew + packages
+./xcode
+./homebrew
+
+./zsh
+./tmux
+./vim
+./git
+./development
+./deployment
+./productivity
+./apps
+./fonts

@@ -13,7 +13,7 @@ main() {
   validate_sudo
 
   # Install
-  ./install/main.sh
+  ./install/main
 }
 
 main
