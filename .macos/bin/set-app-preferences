@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+# Actions made relative to this file's path
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# Load utils
+source ../src/utils
+
+main() {
+  # Immediately validate sudo user
+  validate_sudo
+
+  # Link iTerm2 dynamic profiles
+  ln -f $HOME/.config/iterm2/ryantoddgarza.json $HOME/Library/Application\ Support/iTerm2/DynamicProfiles
+}
+
+main
