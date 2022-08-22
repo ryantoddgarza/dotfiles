@@ -6,12 +6,12 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Close any open `System Preferences` panes in order to
 # avoid overriding the preferences that are being changed.
-./close_system_preferences_panes.applescript
+./close_system_preferences_panes
 
 # Preferences
-./dock.sh
-./finder.sh
-./input_devices.sh
-./network.sh
-./power_management.sh
-./screencapture.sh
+./dock
+./finder
+./input_devices
+./network
+./power_management
+./screencapture
