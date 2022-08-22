@@ -6,14 +6,12 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source utils.sh
+source ../utils
+
+verbose_script
 
 main() {
-  # Immediately validate sudo user
-  validate_sudo
-
-  # Install
-  ./install/main
+  brew install vim
 }
 
 main

@@ -6,12 +6,13 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
 main() {
-  brew install tmux
+  brew tap homebrew/cask-fonts
+  brew install font-meslo-lg
 }
 
 main

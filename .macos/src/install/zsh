@@ -1,12 +1,17 @@
 #!/bin/bash
 
+set -e
+
 # Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
-# macOS software update
-sudo softwareupdate --install --all
+main() {
+  brew install zsh
+}
+
+main

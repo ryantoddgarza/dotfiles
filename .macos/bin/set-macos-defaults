@@ -6,12 +6,14 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
-
-verbose_script
+source ../src/utils
 
 main() {
-  brew install git
+  # Immediately validate sudo user
+  validate_sudo
+
+  # Set macOS defaults
+  ../src/defaults/main
 }
 
 main

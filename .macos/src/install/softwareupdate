@@ -1,18 +1,12 @@
 #!/bin/bash
 
-set -e
-
 # Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
-main() {
-  brew tap homebrew/cask-fonts
-  brew install font-meslo-lg
-}
-
-main
+# macOS software update
+sudo softwareupdate --install --all

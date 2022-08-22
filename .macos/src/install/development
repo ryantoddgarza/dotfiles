@@ -6,7 +6,7 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
@@ -16,7 +16,7 @@ install_mongodb_community() {
 }
 
 install_python() {
-  install_brew_package python
+  brew install python
 }
 
 main() {

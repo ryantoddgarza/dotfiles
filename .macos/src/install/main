@@ -1,15 +1,16 @@
 #!/bin/bash
 
+set -e
+
 # Actions made relative to this file's path
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # OS
 ./softwareupdate
+./xcode
 
 # Homebrew + packages
-./xcode
 ./homebrew
-
 ./zsh
 ./tmux
 ./vim

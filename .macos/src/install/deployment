@@ -6,16 +6,12 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
 main() {
-  brew install cloc
-  brew install pandoc
-  brew install pass
-  brew install rsync
-  brew install tree
+  return
 }
 
 main

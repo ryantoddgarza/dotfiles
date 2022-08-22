@@ -6,13 +6,12 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Load utils
-source ../utils.sh
+source ../utils
 
 verbose_script
 
 main() {
-  brew install iterm2 --cask
-  brew install google-chrome --cask
+  brew install tmux
 }
 
 main
