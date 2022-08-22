@@ -11,8 +11,8 @@ source ../utils.sh
 verbose_script
 
 main() {
-  install_brew_package iterm2 --cask
-  install_brew_package google-chrome --cask
+  brew install iterm2 --cask
+  brew install google-chrome --cask
 }
 
 main

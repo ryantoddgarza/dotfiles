@@ -12,7 +12,7 @@ verbose_script
 
 install_mongodb_community() {
   brew tap mongodb/brew
-  install_brew_package mongodb-community
+  brew install mongodb-community
 }
 
 install_python() {

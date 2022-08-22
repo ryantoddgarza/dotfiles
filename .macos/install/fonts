@@ -12,7 +12,7 @@ verbose_script
 
 main() {
   brew tap homebrew/cask-fonts
-  install_brew_package font-meslo-lg
+  brew install font-meslo-lg
 }
 
 main
