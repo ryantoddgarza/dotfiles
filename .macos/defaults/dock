@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Autohide dock
+# Automatically hide dock
 defaults write com.apple.dock autohide -bool true
 
 # Disable show recent apps in dock
 defaults write com.apple.dock show-recents -bool false
+
+# Disable automatically rearrange spaces
+defaults write com.apple.dock mru-spaces -bool false
 
 # Kill all dock processes
 killall Dock
