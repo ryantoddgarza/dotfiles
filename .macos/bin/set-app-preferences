@@ -13,7 +13,7 @@ main() {
   validate_sudo
 
   # Link iTerm2 dynamic profiles
-  dynamic_profiles_dir=$HOME/Library/Application\ Support/iTerm2/DynamicProfiles
+  dynamic_profiles_dir="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
   mkdir -p "$dynamic_profiles_dir"
   ln -f $HOME/.config/iterm2/ryantoddgarza.json "$dynamic_profiles_dir"
 }
