@@ -14,14 +14,27 @@ options:
 EOF
 }
 
-source_scripts() {
-  source ~/.local/bin/init-dotfile-repo
+init_dotfile_repo() {
+  dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+  $dotfiles checkout --force
+  $dotfiles submodule update --init --recursive
+  $dotfiles config status.showUntrackedFiles no
+
+  unset dotfiles
+}
+
+source_scripts() {
   for file in ~/.macos/bin/{set-macos-defaults,install-software,set-app-preferences}
   do
     source "$file"
   done
   unset file
+}
+
+bootstrap() {
+  init_dotfile_repo
+  source_scripts
 }
 
 prompt_to_run() {
@@ -40,7 +53,7 @@ parse_options() {
   do
     case $opt in
       -h | --help ) usage ;;
-      -f | --force ) source_scripts ;;
+      -f | --force ) bootstrap ;;
       * ) echo "unknown option: $opt"; usage; exit 1 ;;
     esac
   done
