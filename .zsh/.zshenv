@@ -1,13 +1,15 @@
 # Terminal type
 export TERM="screen-256color"
 
-# Path management
-# Unique values only
+# Unique PATH values only
 typeset -U PATH path
-# Modify path
+
+# Modify PATH
+path+=/opt/homebrew/bin
 path+=$HOME/.local/bin
-path=($HOME/.node-versions/current/bin $path)
-# Export to subprocesses
+path+=$HOME/.node-versions/current/bin
+
+# Export PATH to subprocesses
 export PATH
 
 # Cleanup home dir
