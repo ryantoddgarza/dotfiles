@@ -54,9 +54,9 @@
       "Background Color": {
         "Color Space" : "sRGB",
         "Alpha Component" : 1,
-        "Green Component": 0.085,
-        "Blue Component": 0.085,
-        "Red Component": 0.085
+        "Red Component" : 0.10980392156862745,
+        "Blue Component" : 0.10980392156862745,
+        "Green Component" : 0.10980392156862745
       },
       "Selection Color" : {
         "Color Space" : "sRGB",
