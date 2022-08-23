@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# Set macOS defaults and install software.
+# description: Update the index and the files in the working tree then install
+# and configure the software and preferences defined throughout this repository.
+# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e
 
 usage() {
 cat << EOF
-usage: $(basename $0) [options]
+usage: bash $(basename $0) [options]
 
 options:
   -f, --force    Do not prompt for confirmation before running
