@@ -42,7 +42,7 @@ prompt_to_run() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     echo ''
-    source_scripts
+    bootstrap
   else
     exit 1
   fi
