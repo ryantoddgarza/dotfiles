@@ -27,3 +27,7 @@ git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force
 ```sh
 bash bootstrap.sh
 ```
+
+### The `bootstrap.sh` script
+
+The `bootstrap.sh` script updates the index and the files in the working tree then installs and configures the software and preferences defined throughout this repository. Run `bash bootstrap.sh --help` for additional usage options.
