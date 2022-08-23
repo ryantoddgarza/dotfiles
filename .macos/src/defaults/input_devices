@@ -13,7 +13,10 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
 
 # Remap caps lock to escape
-cat > $HOME/Library/LaunchAgents/com.ryantoddgarza.CapslockEsc.plist <<EOF
+launch_agents_dir="$HOME/Library/LaunchAgents"
+mkdir -p $launch_agents_dir
+
+cat > $launch_agents_dir/com.ryantoddgarza.CapslockEsc.plist <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
