@@ -42,7 +42,7 @@ empty_trash() {
 }
 
 prefer_empty_dir() {
-  contents_of_dir=$(ls -l $1 | wc -l)
+  contents_of_dir=$(ls $1 | wc -l)
 
   if [ $contents_of_dir -gt 0 ]
   then
