@@ -17,6 +17,7 @@ filetype plugin indent on
 " Section: Moving around, searching and patterns
 
 set path+=** " Search recursively
+set regexpengine=0
 set incsearch
 set ignorecase
 set smartcase
