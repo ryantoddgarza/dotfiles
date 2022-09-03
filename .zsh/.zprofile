@@ -1,10 +1,17 @@
-# Unique PATH values only
+# User-specific executables
+LOCAL_BIN="$HOME/.local/bin"
+if [[ ! -d $LOCAL_BIN ]];
+then
+  mkdir -p $LOCAL_BIN
+fi
+
+# PATH management
 typeset -U PATH path
 
-# Modify PATH
-path=(/opt/homebrew/bin $path)
-path+=$HOME/.local/bin
+path+=$LOCAL_BIN
 path+=$HOME/.node-versions/current/bin
 
-# Export PATH to subprocesses
 export PATH
+
+# Configure Homebrew environment variables
+eval $(/opt/homebrew/bin/brew shellenv)
