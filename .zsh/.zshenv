@@ -1,16 +1,18 @@
+# Zsh env
+export ZDOTDIR=$HOME/.zsh
+export ZCACHE="$HOME/.cache/zsh"
+mkdir -p $ZCACHE
+
+# Zsh history
+export HISTFILE="$ZCACHE/zsh_history"
+export HISTSIZE=100
+export SAVEHIST=$HISTSIZE
+
 # Terminal type
 export TERM="screen-256color"
 
-# Unique PATH values only
-typeset -U PATH path
-
-# Modify PATH
-path+=/opt/homebrew/bin
-path+=$HOME/.local/bin
-path+=$HOME/.node-versions/current/bin
-
-# Export PATH to subprocesses
-export PATH
+# Output colored file types
+export CLICOLOR=1
 
 # Cleanup home dir
 export LESSHISTFILE="-"

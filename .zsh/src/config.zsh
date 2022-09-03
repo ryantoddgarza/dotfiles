@@ -1,7 +1,3 @@
-# Set Zsh cache dir
-export ZCACHE="$HOME/.cache/zsh"
-mkdir -p $ZCACHE
-
 # Completion
 autoload -Uz compinit
 compinit -d "$ZCACHE/zcompdump-$ZSH_VERSION"
@@ -21,6 +17,3 @@ setopt hist_reduce_blanks
 
 # Vim mode
 bindkey -v
-
-# Output colored file types
-export CLICOLOR=1
