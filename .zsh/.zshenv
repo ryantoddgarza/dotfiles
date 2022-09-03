@@ -4,11 +4,14 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # Zsh env
 export ZDOTDIR=$HOME/.zsh
-export ZCACHE="$HOME/.cache/zsh"
-mkdir -p $ZCACHE
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+if [[ ! -d $ZSH_CACHE_DIR ]];
+then
+  mkdir -p $ZSH_CACHE_DIR
+fi
 
 # Zsh history
-export HISTFILE="$ZCACHE/zsh_history"
+export HISTFILE="$ZSH_CACHE_DIR/zsh_history"
 export HISTSIZE=100
 export SAVEHIST=$HISTSIZE
 
