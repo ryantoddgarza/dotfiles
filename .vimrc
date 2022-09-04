@@ -2,7 +2,7 @@
 
 " Section: Environment
 
-let cachedir = $XDG_CACHE_HOME . '/vim'
+let cachedir = $XDG_CACHE_HOME
 
 " Section: Important
 
@@ -62,7 +62,7 @@ set confirm
 " Section: Editing text
 
 set undofile
-let &undodir = cachedir . '/undo'
+let &undodir = $XDG_STATE_HOME . '/vim_undo'
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
