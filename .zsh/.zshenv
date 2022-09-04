@@ -1,17 +1,13 @@
 # Cross-Desktop Group (XDG) base directory
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # Zsh env
 export ZDOTDIR=$HOME/.zsh
-export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
-if [[ ! -d $ZSH_CACHE_DIR ]];
-then
-  mkdir -p $ZSH_CACHE_DIR
-fi
 
 # Zsh history
-export HISTFILE="$ZSH_CACHE_DIR/zsh_history"
+export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export HISTSIZE=100
 export SAVEHIST=$HISTSIZE
 
@@ -23,4 +19,4 @@ export CLICOLOR=1
 
 # Cleanup home dir
 export LESSHISTFILE="-"
-export NODE_REPL_HISTORY="$HOME/.cache/node_repl_history"
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"

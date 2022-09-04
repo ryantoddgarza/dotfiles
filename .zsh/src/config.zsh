@@ -1,11 +1,11 @@
 # Completion
 autoload -Uz compinit
-compinit -d "$ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION"
+compinit -d "$XDG_CACHE_HOME/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'l:|=* r:|=*'
 setopt complete_in_word
 
 # History
-export HISTFILE="$ZSH_CACHE_DIR/zsh_history"
+export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export HISTSIZE=100
 export SAVEHIST=$HISTSIZE
 setopt inc_append_history
