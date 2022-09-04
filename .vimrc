@@ -1,11 +1,8 @@
 " ~/.vimrc
 
-" Section: Bootstrap
+" Section: Environment
 
-let cachedir = $HOME . '/.cache/vim'
-if !isdirectory(cachedir)
-  call mkdir(cachedir, 'p')
-endif
+let cachedir = $XDG_CACHE_HOME . '/vim'
 
 " Section: Important
 
