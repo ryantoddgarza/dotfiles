@@ -106,6 +106,7 @@ nnoremap <silent> <leader>_ :Hexplore<CR>
 
 " Section: Reading and writing files
 
+set backupcopy=yes
 set backupdir=$TMPDIR
 set autowrite
 set autoread
