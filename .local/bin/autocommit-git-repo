@@ -1,34 +1,16 @@
 #!/bin/bash
 
-# Basic git commit automation
+# description: Git commit automation for task schedulers
+# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e
 
-dir_path="$1"
+# `cd` to local repo
+cd "$1"
 
-cd_to_repo() {
-  cd "$dir_path"
-}
-
-autocommit_if_branch_is_dirty() {
-  if [[ $(git status --porcelain) ]]
-  then
-    git add --all
-    git commit --message="autocommit $(date +'%s')"
-  fi
-}
-
-push_if_remote_exists() {
-  if [[ $(git remote) ]]
-  then
-    git push
-  fi
-}
-
-main() {
-  cd_to_repo
-  autocommit_if_branch_is_dirty
-  push_if_remote_exists
-}
-
-main
+# `commit` if branch is dirty
+if [[ $(git status --porcelain) ]]
+then
+  git add --all
+  git commit --message="autocommit $(date +'%s')"
+fi
