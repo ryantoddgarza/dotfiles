@@ -10,23 +10,12 @@ source ../utils
 
 verbose_script
 
-install_c_tools() {
+main() {
   brew install clang-format
-}
-
-install_mongodb_community() {
   brew tap mongodb/brew
   brew install mongodb-community
-}
-
-install_python() {
   brew install python
-}
-
-main() {
-  install_c_tools
-  install_mongodb_community
-  install_python
+  brew install shellcheck
 }
 
 main
