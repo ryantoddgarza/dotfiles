@@ -32,21 +32,21 @@ clean_system() {
 }
 
 dangerously_delete_files() {
-  rm -rf $HOME/Library/Logs/*
-  find $HOME -type f -name '.DS_Store' -delete
+  rm -rf "$HOME/Library/Logs"/*
+  find "$HOME" -type f -name '.DS_Store' -delete
 }
 
 empty_trash() {
   echo '› empty_trash'
-  sudo rm -rf $HOME/.Trash/{.[!.],..?,}*
+  sudo rm -rf "$HOME/.Trash"/{.[!.],..?,}*
 }
 
 prefer_empty_dir() {
-  contents_of_dir=$(ls $1 | wc -l)
+  contents_of_dir=$(ls "$1" | wc -l)
 
-  if [ $contents_of_dir -gt 0 ]
+  if [ "$contents_of_dir" -gt 0 ]
   then
-    echo "dirty: Unnecessary items in $(basename $1)"
+    echo "dirty: Unnecessary items in $(basename "$1")"
   fi
 }
 
