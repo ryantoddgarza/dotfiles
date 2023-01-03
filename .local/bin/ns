@@ -33,11 +33,12 @@ ns_dir_exists() {
 }
 
 ns_version_is_installed() {
-  ns_dir_exists $(ns_get_version_dir $1)
+  ns_dir_exists "$(ns_get_version_dir "$1")"
 }
 
 ns_remove_links() {
-  local ns_current_version=$(cat $NS_CURRENT_VERSION_FILE)
+  local ns_current_version
+  ns_current_version=$(cat "$NS_CURRENT_VERSION_FILE")
 
   for file in "$ns_current_version/bin"; do
     if [[ -f $file ]]; then
