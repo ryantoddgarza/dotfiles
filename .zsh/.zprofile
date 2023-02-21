@@ -9,7 +9,6 @@ fi
 typeset -U PATH path
 
 path+=$LOCAL_BIN
-path+=$HOME/.node-versions/current/bin
 
 export PATH
 
