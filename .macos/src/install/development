@@ -11,11 +11,19 @@ source ../utils
 verbose_script
 
 main() {
+  # C
   brew install clang-format
+  # Python
+  brew install python
+  # Shell
+  brew install shellcheck
+  # MongoDB
   brew tap mongodb/brew
   brew install mongodb-community
-  brew install python
-  brew install shellcheck
+  # Xcode
+  brew install mas # Install Mac App Store CLI
+  mas install 497799835 # Install Xcode by ID
+  sudo xcodebuild -license accept
 }
 
 main
