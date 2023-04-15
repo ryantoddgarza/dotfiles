@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Cleanup local environment
+# description: Cleanup macOS
+# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e -o pipefail
 
@@ -14,35 +15,41 @@ trap exit_trap EXIT
 # Validate sudo user
 sudo -v
 
+# HELPER FUNCTIONS
+
+prefer_empty_dir() {
+  if [ "$(ls "$1")" ]
+  then
+    echo "Dirty: Unnecessary items in $(basename "$1")"
+  fi
+}
+
+# CLEANUP FUNCTIONS
+
 clean_files() {
   echo '› clean_files'
-  dangerously_delete_files || true
-  prefer_empty_dir "$HOME/Desktop"
-  prefer_empty_dir "$HOME/Downloads"
+  prefer_empty_dir "$HOME"/Desktop
+  prefer_empty_dir "$HOME"/Downloads
 }
 
 clean_system() {
   echo '› clean_system'
+  # Flush disk cache
   sudo purge
-}
-
-dangerously_delete_files() {
-  rm -rf "$HOME/Library/Logs"/*
+  # Flush DNS cache
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+  # Remove user logs
+  sudo rm -rf "$HOME"/Library/Logs/*
+  # Remove system logs
+  sudo rm -rf /private/var/log/*
+  # Remove .DS_Store files
   find "$HOME" -type f -name '.DS_Store' -delete
 }
 
 empty_trash() {
   echo '› empty_trash'
-  sudo rm -rf "$HOME/.Trash"/{.[!.],..?,}*
-}
-
-prefer_empty_dir() {
-  contents_of_dir=$(ls "$1" | wc -l)
-
-  if [ "$contents_of_dir" -gt 0 ]
-  then
-    echo "dirty: Unnecessary items in $(basename "$1")"
-  fi
+  sudo rm -rf "$HOME"/.Trash/{.[!.],..?,}*
 }
 
 main() {
