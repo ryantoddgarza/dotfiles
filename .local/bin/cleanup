@@ -21,11 +21,6 @@ clean_files() {
   prefer_empty_dir "$HOME/Downloads"
 }
 
-clean_packages() {
-  echo '› clean_packages'
-  brew cleanup
-}
-
 clean_system() {
   echo '› clean_system'
   sudo purge
@@ -51,7 +46,6 @@ prefer_empty_dir() {
 }
 
 main() {
-  clean_packages
   clean_system
   clean_files
   empty_trash
