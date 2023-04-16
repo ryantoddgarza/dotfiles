@@ -11,7 +11,12 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 
 " Ale
-let g:ale_linters = { 'javascript': ['eslint'], 'html': ['tidy'], 'python': ['pylint'] }
+let g:ale_linters = {
+      \  'html': ['tidy'],
+      \  'javascript': ['eslint'],
+      \  'python': ['pylint'],
+      \  'swift': ['swiftlint'],
+      \}
 
 " Vimwiki
 let g:vimwiki_global_ext = 0
