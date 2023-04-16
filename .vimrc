@@ -120,7 +120,7 @@ set directory=$TMPDIR
 set history=200
 set wildmode=full
 set wildignore+=*.o,*~,*.pyc,*/.DS_Store
-set wildignore+=*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/Library/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*
 set wildmenu
 
 " Section: Multi-byte characters
