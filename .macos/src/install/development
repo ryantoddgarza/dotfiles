@@ -15,6 +15,8 @@ main() {
   brew install clang-format
   # Python
   brew install python
+  # Swift
+  brew install swiftlint
   # Shell
   brew install shellcheck
   # MongoDB
