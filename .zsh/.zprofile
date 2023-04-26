@@ -8,9 +8,7 @@ fi
 # PATH management
 typeset -U PATH path
 
+path=(/opt/homebrew/bin $path)
 path+=$LOCAL_BIN
 
 export PATH
-
-# Configure Homebrew environment variables
-eval $(/opt/homebrew/bin/brew shellenv)
