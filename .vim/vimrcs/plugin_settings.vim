@@ -11,6 +11,7 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 
 " Ale
+let g:ale_virtualtext_cursor = 0
 let g:ale_linters = {
       \  'html': ['tidy'],
       \  'javascript': ['eslint'],
