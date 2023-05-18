@@ -15,8 +15,6 @@ main() {
   brew install clang-format
   # Python
   brew install python
-  # Swift
-  brew install swiftlint
   # Shell
   brew install shellcheck
   # MongoDB
@@ -26,6 +24,8 @@ main() {
   brew install mas # Install Mac App Store CLI
   mas install 497799835 # Install Xcode by ID
   sudo xcodebuild -license accept
+  # Swift
+  brew install swiftlint
 }
 
 main
