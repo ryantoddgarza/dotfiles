@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Description: Set default app preferences
+# Purpose: Set default app preferences
 # Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Node Swap
-# description: Manage node versions
-# version: 0.2.0
-# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+# Purpose: Manage node versions
+# Version: 0.2.0
+# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 # Set to your system
 NS_SYSTEM=darwin-x64

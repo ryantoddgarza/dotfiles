@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# description: Git commit automation for task schedulers
-# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+# Purpose: Git commit automation for task schedulers
+# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e
 
