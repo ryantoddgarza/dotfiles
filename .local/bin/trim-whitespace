@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Purpose: Remove trailing whitespace in place
+# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+
+# Check if filename argument is provided
+if [ -z "$1" ]
+then
+  echo "Usage: $(basename "$0") <filename>"
+  exit 1
+fi
+
+# Check if the file exists
+if [ ! -f "$1" ]
+then
+  echo "File not found: $1"
+  exit 1
+fi
+
+# Remove trailing whitespace in place
+sed -i '' 's/[[:space:]]*$//' "$1"
