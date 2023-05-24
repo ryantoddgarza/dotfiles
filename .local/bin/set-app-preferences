@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Description: Set default app preferences
+# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+
+set -e
+
+link_iterm2_dynamic_profiles() {
+  dynamic_profiles_dir="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+
+  # Make dynamic profiles directory
+  mkdir -p "$dynamic_profiles_dir"
+
+  # Link version controlled profile
+  ln -f "$HOME/.config/iterm2/ryantoddgarza.json" "$dynamic_profiles_dir"
+}
+
+main() {
+  sudo -v
+  link_iterm2_dynamic_profiles
+}
+
+main
