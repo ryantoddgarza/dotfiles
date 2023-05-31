@@ -13,10 +13,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ./homebrew
 ./zsh
 ./tmux
-./vim
+# ./vim # netrw :Explore issue (last tested May 04, 2023)
 ./git
 ./development
-./deployment
 ./productivity
 ./apps
 ./fonts
