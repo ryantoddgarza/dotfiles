@@ -11,7 +11,10 @@ source ../utils
 verbose_script
 
 main() {
-  brew install git
+  # Command Line Tools installed git is used by default.
+  # Uncomment to use brew installed git.
+  # brew install git
+  return
 }
 
 main
