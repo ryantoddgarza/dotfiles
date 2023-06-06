@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -e
+
 sudo -v
 
-# Close any open Syetem Settings panes
+# Close any open System Settings panes
 osascript -e 'tell application "System Settings" to quit'
 
 # SECTION: Dock
@@ -59,7 +61,7 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
 
-# Remap capslock to escape
+# Remap caps lock to escape
 LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"
 mkdir -p "$LAUNCH_AGENTS_DIR"
 

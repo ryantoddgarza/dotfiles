@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# description: Update the index and the files in the working tree then install
-# and configure the software and preferences defined throughout this repository.
-# author: Ryan Todd Garza <ryantoddgarza@gmail.com>
+# Purpose: Update the index and files in the working tree then install software
+# and configure preferences and defaults.
+# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
 set -e
 

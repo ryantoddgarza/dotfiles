@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Purpose: Set default app preferences
-# Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
-
 set -e
 
 link_iterm2_dynamic_profiles() {
