@@ -1,19 +1,147 @@
 #!/bin/bash
 
-set -e
+sudo -v
 
-# Actions made relative to this file's path
-cd "$(dirname "${BASH_SOURCE[0]}")"
+# Close any open Syetem Settings panes
+osascript -e 'tell application "System Settings" to quit'
 
-# Load utils
-source ../src/utils
+# SECTION: Dock
 
-main() {
-  # Immediately validate sudo user
-  validate_sudo
+# Automatically hide dock
+defaults write com.apple.dock autohide -bool true
 
-  # Set macOS defaults
-  ../src/defaults/main
-}
+# Disable show recent apps in dock
+defaults write com.apple.dock show-recents -bool false
 
-main
+# Disable automatically rearrange spaces
+defaults write com.apple.dock mru-spaces -bool false
+
+# SECTION: Finder
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Open new Finder window in home directory
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
+
+# Hide recent tags
+defaults write com.apple.finder ShowRecentTags -bool false
+
+# Set default view style to column view
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Desktop view settings
+FINDER_PLIST="$HOME/Library/Preferences/com.apple.finder.plist"
+
+plutil -replace DesktopViewSettings.GroupBy -string "None" "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.arrangeBy -string "kind" "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.gridSpacing -integer 48 "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.iconSize -integer 48 "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.labelOnBottom -integer 0 "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.showIconPreview -integer 1 "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.showItemInfo -integer 0 "$FINDER_PLIST"
+plutil -replace DesktopViewSettings.IconViewSettings.textSize -integer 12 "$FINDER_PLIST"
+
+unset FINDER_PLIST
+
+# SECTION: Input Devices
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Set a fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
+
+# Trackpad: enable tap to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
+
+# Remap capslock to escape
+LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"
+mkdir -p "$LAUNCH_AGENTS_DIR"
+
+cat > "$LAUNCH_AGENTS_DIR/com.ryantoddgarza.CapslockEsc.plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.ryantoddgarza.CapslockEsc</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/hidutil</string>
+      <string>property</string>
+      <string>--set</string>
+      <string>{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>
+EOF
+
+unset LAUNCH_AGENTS_DIR
+
+# SECTION: Network
+
+# Uncomment to use Cloudflare DNS
+# sudo networksetup -setdnsservers Wi-Fi \
+#   1.1.1.1 \
+#   1.0.0.1 \
+#   2606:4700:4700::1111 \
+#   2606:4700:4700::1001
+
+# Section: Power Management
+
+# Restore defaults: all power management settings should be made in this script
+sudo pmset restoredefaults > /dev/null
+
+# Sleep the display after 15 minutes while charging
+sudo pmset -c displaysleep 15
+
+# Disable machine sleep while charging
+sudo pmset -c sleep 0
+
+# Sleep the display after 2 minutes on battery
+sudo pmset -b displaysleep 2
+
+# Set machine sleep to 5 minutes on battery
+sudo pmset -b sleep 5
+
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
+
+# Disable screen dim on battery
+sudo pmset -b lessbright 0
+
+# SECTION: Screencapture
+
+# Set screencapture directory
+SCREENCAPTURE_DIR="$HOME/Pictures/Screencapture"
+mkdir -p "$SCREENCAPTURE_DIR"
+
+# Save screencapture to specified directory
+defaults write com.apple.screencapture location -string "$SCREENCAPTURE_DIR"
+
+# Save screencapture as jpg
+defaults write com.apple.screencapture type -string "jpg"
+
+# Remove default timestamp
+defaults write com.apple.screencapture include-date -bool false
+
+# Set screencapture filename
+defaults write com.apple.screencapture name -string "$(hostname)-$(date +"%Y%m%dT%H%M%S")"
+
+# Disable drop shadow
+defaults write com.apple.screencapture disable-shadow -bool true
+
+unset SCREENCAPTURE_DIR
+
+# SECTION: Kill affected applications
+
+killall Dock
+killall Finder
+killall cfprefsd
