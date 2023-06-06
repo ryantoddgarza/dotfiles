@@ -2,18 +2,84 @@
 
 set -e
 
-# Actions made relative to this file's path
-cd "$(dirname "${BASH_SOURCE[0]}")"
+echo_warning() {
+  local text="$1"
+  local yellow
+  local reset
+  yellow=$(tput setaf 3)
+  reset=$(tput sgr0)
+  echo "${yellow}Warning:${reset} $text"
+}
 
-# Load utils
-source ../src/utils
+install_xcode_command_line_tools() {
+  is_installed=$(xcode-select --print-path &> /dev/null)
+
+  if $is_installed
+  then
+    version=$(xcode-select -version | awk '{print ($3+0)}')
+    echo_warning "xcode-select $version is already installed."
+    echo 'To reinstall or update, run:'
+    echo '  xcode-select --install'
+  else
+    xcode-select --install
+  fi
+}
+
+install_homebrew() {
+  is_installed=$(which brew &> /dev/null)
+
+  if $is_installed
+  then
+    version=$(brew --version | head -1 | awk '{print $2}')
+    echo_warning "homebrew $version is already installed (so it will be updated)."
+    brew update
+  else
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew analytics off
+  fi
+}
 
 main() {
-  # Immediately validate sudo user
-  validate_sudo
+  sudo -v
 
-  # Install software
-  ../src/install/main
+  # General Tools
+  install_xcode_command_line_tools
+
+  # Package Managers
+  install_homebrew
+  brew install mas
+
+  # Terminal and Shell Utilities
+  brew install zsh
+  brew install tmux
+  brew install shellcheck
+  brew install font-meslo-lg
+  brew install --cask iterm2
+
+  # Development Tools
+  brew install git
+  brew install gh
+  brew install vim
+  brew install node
+  brew install node@18
+  brew install node@16
+  brew install python
+  brew install clang-format
+
+  # Web Development Tools
+  brew tap mongodb/brew
+  brew install mongodb-community
+
+  # macOS and iOS Development Tools
+  brew install swiftlint
+  mas install 497799835 # Install Xcode by ID
+  sudo xcodebuild -license accept
+
+  # Productivity and Utilities
+  brew install cloc
+  brew install --cask google-chrome
+  brew install --cask obsidian
+  mas install 1176895641 # Install Spark by ID
 }
 
 main
