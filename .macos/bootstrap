@@ -27,7 +27,7 @@ init_dotfile_repo() {
 }
 
 source_scripts() {
-  for file in ~/.macos/bin/{set-macos-defaults,install-software}
+  for file in ~/.macos/{install-software,set-app-preferenes,set-macos-defaults}
   do
     source "$file"
   done
