@@ -1,33 +1,57 @@
 # Dotfiles
 
-## Installing on macOS
+Personal dotfiles for macOS.
 
-**Warning**: The installation process will overwrite existing configuration files. You should fork this repository, review the code, and make additions or omissions before proceeding. _Use at your own risk!_
+**Warning**: Parts of the installation process will overwrite existing configuration files. You should fork this repository, review the code, and make additions or omissions before proceeding. _Use at your own risk!_
 
-1. If your mac does not have Git installed, first install the Xcode Command Line Tools.
+## Installing
 
-```sh
+1. If your Mac does not have Git installed, first install the Xcode Command Line Tools.
+
+```shell
 xcode-select --install
 ```
 
 2. Clone the bare Git repository.
 
-```sh
+```shell
 git clone --bare https://github.com/ryantoddgarza/dotfiles.git $HOME/.dotfiles
 ```
 
-3. Checkout the Git repository.
+3. Checkout the Git repository. **This command will overwrite existing files with matching filenames. Backup your files before proceeding.**
 
-```sh
+```shell
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force
 ```
 
-4. Run the bootstrap script.
+4. Review the following scripts and make additions or omissions.
 
-```sh
-bash bootstrap.sh
+- `~/.macos/install-software`
+- `~/.macos/set-app-preferences`
+- `~/.macos/set-macos-defaults`
+
+5. Run the provided scripts.
+
+```shell
+cd ~/.macos
+./install-software
+./set-app-preferences
+./set-macos-defaults
 ```
 
-### The `bootstrap.sh` script
+### The `bootstrap` script
 
-The `bootstrap.sh` script updates the index and the files in the working tree then installs and configures the software and preferences defined throughout this repository. Run `bash bootstrap.sh --help` for additional usage options.
+The `bootstrap` script provides a single command to execute the steps above. Run `~/.macos/bin/bootstrap --help` for usage options. **This command will overwrite existing files with matching filenames. Backup you files before proceeding.**
+
+1. If your Mac does not have Git installed, first install the Xcode Command Line Tools.
+
+```shell
+xcode-select --install
+```
+
+2. Run the bootstrap script.
+
+```shell
+~/.macos/bootstrap
+```
+
