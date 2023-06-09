@@ -18,5 +18,6 @@
 [http]
 	postBuffer = 524288000
 [user]
-	name = ryantoddgarza
-	email = ryantoddgarza@gmail.com
+	# Configure in ~/.gitconfig.local
+[include]
+	path = .gitconfig.local
