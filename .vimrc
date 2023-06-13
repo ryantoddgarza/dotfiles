@@ -1,9 +1,5 @@
 " ~/.vimrc
 
-" Section: Environment
-
-let cachedir = $XDG_CACHE_HOME
-
 " Section: Important
 
 set nocompatible
@@ -29,15 +25,10 @@ set sidescrolloff=1
 set cmdheight=1
 set lazyredraw
 set number
-set numberwidth=5
 
 " Section: Syntax, highlighting and spelling
 
-set background=dark
-colorscheme monokai
-set colorcolumn=81
-
-" Make trailing whitespace obvious
+" Make trailing whitespace obvious (set before `syntax on`)
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=1 guibg=darkred
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -45,12 +36,15 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 syntax on
+colorscheme monokai
+
+set background=dark
+set colorcolumn=81
 
 " Section: GUI
 
 " Redistribute panes on window resize
 autocmd VimResized * :wincmd =
-
 " No scrollbars
 set guioptions-=l guioptions-=L guioptions-=r guioptions-=R
 
@@ -69,16 +63,19 @@ endif
 
 set infercase
 set showmatch
+set backspace=0
 
 " Section: Tabs and indenting
 
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
+set smartindent
 set shiftround
 
-" Section: Folding'
+" Section: Folding
 
 set foldmethod=marker
 
@@ -89,20 +86,32 @@ let mapleader=','
 set timeoutlen=1200
 set ttimeoutlen=50
 
-" Always move by display lines (wrapped).
+" Always move by display (wrapped) lines
 noremap j gj
 noremap k gk
-" Center line vertically when repeating a search.
+" Center line vertically when repeating a search
 nnoremap n nzz
 nnoremap N Nzz
-" Manage `.vimrc`.
+" Manage vimrc
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
-" Delete all trailing whitespace in file.
-nnoremap <leader>dtw :%s/\s\+$<CR>
+" Trim whitespace
+nnoremap <leader>tw :%s/\s\+$<CR>
 " Quick window splits.
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
+" Disable backspace in [normal, visual, select, operator-pending]
+noremap <backspace> <nop>
+" Disable arrow keys in [normal, visual, select, operator-pending]
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+" Disable arrow keys in [insert]
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " Section: Reading and writing files
 
@@ -127,10 +136,41 @@ set wildmenu
 
 set encoding=utf-8
 
+" Section: Filetype settings
+
+autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
+
 " Section: Various
 
-let &viminfofile = cachedir . '/viminfo'
+let &viminfofile = $XDG_CACHE_HOME . '/viminfo'
 
 " Section: Plugin settings
 
-source ~/.vim/vimrcs/plugin_settings.vim
+let g:airline_theme = 'molokai'
+let g:ale_virtualtext_cursor = 0
+let g:user_emmet_leader_key = ','
+let g:user_emmet_install_global = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_dirhistmax = 0
+let g:vimwiki_global_ext = 0
+let g:vimwiki_auto_header = 1
+let g:vimwiki_list = [
+      \  {
+      \    'path': '~/vimwiki/src/vimwiki',
+      \    'syntax': 'markdown',
+      \    'ext': '.md',
+      \    'links_space_char': '-',
+      \  }
+      \]
+let g:vimwiki_key_mappings = {
+      \  'all_maps': 1,
+      \  'global': 1,
+      \  'headers': 1,
+      \  'text_objs': 1,
+      \  'table_format': 0,
+      \  'table_mappings': 0,
+      \  'lists': 1,
+      \  'links': 1,
+      \  'html': 0,
+      \  'mouse': 0,
+      \}

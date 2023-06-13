@@ -1,4 +1,5 @@
-" Integrate pane switching with tmux
+" tmux.vim - Integrate pane switching with tmux
+
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
