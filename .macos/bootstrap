@@ -4,8 +4,6 @@
 # and configure preferences and defaults.
 # Author: Ryan Todd Garza <ryantoddgarza@gmail.com>
 
-set -e
-
 usage() {
 cat << EOF
 usage: $(basename $0) [options]
@@ -37,9 +35,6 @@ source_scripts() {
 bootstrap() {
   init_dotfile_repo
   source_scripts
-
-  # Call additional local scripts
-  set-app-preferences
 }
 
 prompt_to_run() {
