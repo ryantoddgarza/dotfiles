@@ -64,7 +64,12 @@ main() {
   brew install node@18
   brew install node@16
   brew install python
+  python3 -m pip install --upgrade pip
   brew install clang-format
+
+  # Language servers
+  brew install typescript-language-server
+  pip install --user python-lsp-server
 
   # Web Development Tools
   brew tap mongodb/brew
