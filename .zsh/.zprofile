@@ -9,12 +9,7 @@ PYTHON_VERSION_NUMBER=$(python3 --version 2>&1 | awk '{print $2}' | awk -F. '{pr
 path+=~/Library/Python/$PYTHON_VERSION_NUMBER/bin
 
 # Append local bin to PATH
-LOCAL_BIN="$HOME/.local/bin"
-if [[ ! -d $LOCAL_BIN ]];
-then
-  mkdir -p $LOCAL_BIN
-fi
-path+=$LOCAL_BIN
+path+=~/.local/bin
 
 # Export PATH after changes
 export PATH
