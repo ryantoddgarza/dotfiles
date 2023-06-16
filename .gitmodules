@@ -44,9 +44,6 @@
 [submodule ".zsh/plugins/zsh-syntax-highlighting"]
 	path = .zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".vim/pack/plugins/start/vim-toggle"]
-	path = .vim/pack/plugins/start/vim-toggle
-	url = https://github.com/ryantoddgarza/vim-toggle.git
 [submodule ".vim/pack/plugins/start/vim-python-pep8-indent"]
 	path = .vim/pack/plugins/start/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
