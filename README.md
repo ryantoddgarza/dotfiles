@@ -22,6 +22,8 @@ git clone --bare https://github.com/ryantoddgarza/dotfiles.git $HOME/.dotfiles
 
 ```shell
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force
+dotfiles submodule update --init --recursive
+dotfiles config status.showUntrackedFiles no
 ```
 
 4. Review the following scripts and make additions or omissions.
@@ -41,7 +43,7 @@ cd ~/.macos
 
 ### The `bootstrap` script
 
-The `bootstrap` script provides a single command to execute the steps above. Run `~/.macos/bin/bootstrap --help` for usage options. **This command will overwrite existing files with matching filenames. Backup you files before proceeding.**
+The [`bootstrap` script](.macos/bootstrap) provides a single command to execute the steps above. Run `~/.macos/bin/bootstrap --help` for usage options. **This command will _always_ checkout forcibly and local changes will be lost. Backup you files before proceeding.**
 
 1. If your Mac does not have Git installed, first install the Xcode Command Line Tools.
 
