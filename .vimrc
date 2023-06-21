@@ -147,6 +147,7 @@ let &viminfofile = $XDG_CACHE_HOME . '/viminfo'
 " Section: Plugin settings
 
 let g:airline_theme = 'molokai'
+let g:ale_enabled = 0 " TODO: Uninstall if migrating to vim-lsp
 let g:ale_virtualtext_cursor = 0
 let g:user_emmet_leader_key = ','
 let g:user_emmet_install_global = 0
