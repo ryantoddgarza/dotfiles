@@ -149,6 +149,23 @@ let &viminfofile = $XDG_CACHE_HOME . '/viminfo'
 let g:airline_theme = 'molokai'
 let g:ale_enabled = 0 " TODO: Uninstall if migrating to vim-lsp
 let g:ale_virtualtext_cursor = 0
+
+" LSP diagnostics
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 250
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 1
+let g:lsp_diagnostics_virtual_text_align = 'right'
+let g:lsp_diagnostics_virtual_text_wrap = 'truncate'
+" LSP text appearance
+highlight LspErrorText ctermfg=196
+highlight LspWarningText ctermfg=208
+highlight LspInformationText ctermfg=253
+highlight LspHintText ctermfg=253
+
 let g:user_emmet_leader_key = ','
 let g:user_emmet_install_global = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
