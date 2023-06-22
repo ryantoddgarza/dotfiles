@@ -26,7 +26,7 @@ if executable('typescript-language-server')
 	au User lsp_setup call lsp#register_server({
 				\ 'name': 'tsserver',
 				\ 'cmd': {server_info->['typescript-language-server', '--stdio']},
-				\ 'allowlist': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'],
+				\ 'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
 				\ })
 endif
 
