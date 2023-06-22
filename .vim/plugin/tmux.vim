@@ -1,4 +1,4 @@
-" tmux.vim - Integrate pane switching with tmux
+" Integrate pane switching with tmux
 
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
