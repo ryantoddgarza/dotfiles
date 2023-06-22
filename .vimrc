@@ -138,6 +138,8 @@ set encoding=utf-8
 
 " Section: Filetype settings
 
+autocmd BufRead,BufNewFile *.m set filetype=objc
+
 " Section: Various
 
 let &viminfofile = $XDG_CACHE_HOME . '/viminfo'
