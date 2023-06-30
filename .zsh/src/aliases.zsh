@@ -16,6 +16,7 @@ alias gconfig="vim ~/.gitconfig"
 
 # App commands
 alias v="vim ."
+alias nv="nvim ."
 alias g="git"
 alias dotf="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias todo="task ~/Documents/tasks.txt"

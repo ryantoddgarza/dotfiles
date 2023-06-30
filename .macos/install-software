@@ -60,6 +60,7 @@ main() {
   brew install git
   brew install gh
   brew install vim
+  brew install neovim
   brew install node
   brew install node@18
   brew install node@16
