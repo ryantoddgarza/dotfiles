@@ -62,8 +62,6 @@ function! s:on_lsp_buffer_enabled() abort
     highlight LspWarningText ctermfg=208
     highlight LspInformationText ctermfg=253
     highlight LspHintText ctermfg=253
-
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
