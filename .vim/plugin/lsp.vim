@@ -1,35 +1,3 @@
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'clangd',
-                \ 'cmd': {server_info->['clangd']},
-                \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
-                \ })
-endif
-
-if executable('sourcekit-lsp')
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'sourcekit',
-                \ 'cmd': {server_info->['sourcekit-lsp']},
-                \ 'allowlist': ['swift'],
-                \ })
-endif
-
-if executable('pylsp')
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'pylsp',
-                \ 'cmd': {server_info->['pylsp']},
-                \ 'allowlist': ['python'],
-                \ })
-endif
-
-if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'tsserver',
-                \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
-                \ 'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
-                \ })
-endif
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -64,8 +32,42 @@ function! s:on_lsp_buffer_enabled() abort
     highlight LspHintText ctermfg=253
 endfunction
 
+augroup lsp_register_server
+    if executable('clangd')
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+    endif
+
+    if executable('sourcekit-lsp')
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'sourcekit',
+                    \ 'cmd': {server_info->['sourcekit-lsp']},
+                    \ 'allowlist': ['swift'],
+                    \ })
+    endif
+
+    if executable('pylsp')
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'pylsp',
+                    \ 'cmd': {server_info->['pylsp']},
+                    \ 'allowlist': ['python'],
+                    \ })
+    endif
+
+    if executable('typescript-language-server')
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'tsserver',
+                    \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
+                    \ 'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
+                    \ })
+    endif
+augroup END
+
 augroup lsp_install
-    au!
+    autocmd!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
