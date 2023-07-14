@@ -56,4 +56,3 @@ xcode-select --install
 ```shell
 ~/.macos/bootstrap
 ```
-
