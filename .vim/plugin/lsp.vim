@@ -1,5 +1,7 @@
 function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
+    setlocal completeopt+=preview
+    setlocal completeopt+=noselect
+    setlocal omnifunc=lsp#omni#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     nmap <buffer> gd <plug>(lsp-definition)
@@ -30,6 +32,8 @@ function! s:on_lsp_buffer_enabled() abort
     highlight LspWarningText ctermfg=208
     highlight LspInformationText ctermfg=253
     highlight LspHintText ctermfg=253
+
+    autocmd TextChangedI * call lsp#omni#complete(0, 'keyword')
 endfunction
 
 augroup lsp_register_server
