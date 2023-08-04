@@ -22,6 +22,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gi <plug>(lsp-implementation)
     nmap <buffer> gt <plug>(lsp-type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> <leader>f <plug>(lsp-document-format)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
