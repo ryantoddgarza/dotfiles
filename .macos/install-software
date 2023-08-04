@@ -83,6 +83,7 @@ main() {
 
   # Productivity and Utilities
   brew install cloc
+  brew install ripgrep
   brew install --cask google-chrome
   brew install --cask obsidian
   mas install 1176895641 # Install Spark by ID
