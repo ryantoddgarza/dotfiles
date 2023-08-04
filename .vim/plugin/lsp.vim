@@ -1,3 +1,14 @@
+let g:lsp_format_sync_timeout = 1000
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 250
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_signs_insert_mode_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_virtual_text_align = 'right'
+let g:lsp_diagnostics_virtual_text_wrap = 'truncate'
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal completeopt+=preview
     setlocal completeopt+=noselect
@@ -16,17 +27,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     " nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     " nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    let g:lsp_diagnostics_enabled = 1
-    let g:lsp_diagnostics_echo_cursor = 1
-    let g:lsp_diagnostics_echo_delay = 250
-    let g:lsp_diagnostics_highlights_enabled = 0
-    let g:lsp_diagnostics_signs_enabled = 1
-    let g:lsp_diagnostics_signs_insert_mode_enabled = 0
-    let g:lsp_diagnostics_virtual_text_enabled = 1
-    let g:lsp_diagnostics_virtual_text_align = 'right'
-    let g:lsp_diagnostics_virtual_text_wrap = 'truncate'
 
     highlight LspErrorText ctermfg=196
     highlight LspWarningText ctermfg=208
