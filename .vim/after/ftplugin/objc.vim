@@ -1,10 +1,6 @@
 " Prefer single line comments
 setlocal commentstring=//\ %s
 
-" Format
-setlocal equalprg=clang-format
-nnoremap <F5> mzgg=G`z
-
 " Compile
 setlocal makeprg=clang\ -fobjc-arc\ %\ -o\ %<
 

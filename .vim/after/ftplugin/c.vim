@@ -1,7 +1,3 @@
-" Format
-setlocal equalprg=clang-format
-nnoremap <F5> mzgg=G`z
-
 " Compile
 setlocal makeprg=clang\ %\ -o\ %<
 
