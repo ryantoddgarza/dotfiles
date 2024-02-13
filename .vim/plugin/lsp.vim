@@ -10,6 +10,7 @@ let g:lsp_diagnostics_virtual_text_align = 'right'
 let g:lsp_diagnostics_virtual_text_wrap = 'truncate'
 
 function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     nmap <buffer> gd <plug>(lsp-definition)
