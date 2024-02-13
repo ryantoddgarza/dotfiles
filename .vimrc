@@ -9,7 +9,7 @@ filetype plugin indent on
 
 " Section: Moving around, searching and patterns
 
-set path+=** " Search recursively
+set path+=**
 set regexpengine=0
 set incsearch
 set ignorecase
@@ -85,7 +85,7 @@ let mapleader=','
 set timeoutlen=1200
 set ttimeoutlen=50
 
-" Always move by display (wrapped) lines
+" Always move by displayed (wrapped) lines
 noremap j gj
 noremap k gk
 " Center line vertically when repeating a search
@@ -94,19 +94,19 @@ nnoremap N Nzz
 " Manage vimrc
 nnoremap <leader>ve :tabe $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
-" Trim whitespace
+" Trim trailing whitespace
 nnoremap <leader>tw :%s/\s\+$<CR>
-" Quick window splits.
+" Quick window splits
 nnoremap <silent> <leader>\| :Vexplore<CR>
 nnoremap <silent> <leader>_ :Hexplore<CR>
-" Disable backspace in [normal, visual, select, operator-pending]
+" Disable backspace in normal, visual, select, & operator-pending modes
 noremap <backspace> <nop>
-" Disable arrow keys in [normal, visual, select, operator-pending]
+" Disable arrow keys in normal, visual, select, & operator-pending modes
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
-" Disable arrow keys in [insert]
+" Disable arrow keys in insert mode
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
