@@ -2,7 +2,7 @@
 
 Personal dotfiles for macOS.
 
-**Warning**: Parts of the installation process will overwrite existing configuration files. You should fork this repository, review the code, and make additions or omissions before proceeding. _Use at your own risk!_
+***Warning***: Parts of the installation process will overwrite existing configuration files. You should fork this repository, review the code, and make additions or omissions before proceeding. _Use at your own risk!_
 
 ## Installing
 
@@ -18,7 +18,11 @@ xcode-select --install
 git clone --bare https://github.com/ryantoddgarza/dotfiles.git $HOME/.dotfiles
 ```
 
-3. Checkout the Git repository. **This command will overwrite existing files with matching filenames. Backup your files before proceeding.**
+### Path 1: Run scripts manually
+
+3. Checkout and setup the Git repository.
+
+***Warning***: This command will overwrite existing files with matching filenames. Backup your files before proceeding.
 
 ```shell
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force
@@ -41,18 +45,19 @@ cd ~/.macos
 ./set-macos-defaults
 ```
 
-### The `bootstrap` script
+### Path 2: Run the `bootstrap` script
 
-The [`bootstrap` script](.macos/bootstrap) provides a single command to execute the steps above. Run `~/.macos/bin/bootstrap --help` for usage options. **This command will _always_ checkout forcibly and local changes will be lost. Backup you files before proceeding.**
+The [`bootstrap` script](.macos/bootstrap) provides a single command to execute the manual installation steps above.
 
-1. If your Mac does not have Git installed, first install the Xcode Command Line Tools.
+***Warning***: This command will always checkout _forcibly_; local changes will be lost. Backup you files before proceeding.
 
-```shell
-xcode-select --install
-```
-
-2. Run the bootstrap script.
+3. Run the bootstrap script.
 
 ```shell
 ~/.macos/bootstrap
 ```
+
+For additional usage options, run:
+
+```shell
+~/.macos/bootstrap --help
