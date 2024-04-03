@@ -56,3 +56,13 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Xcode ------------------------------------------------------------------------
+# https://github.com/github/gitignore/blob/main/Global/Xcode.gitignore
+
+# User settings
+xcuserdata/
+
+# Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
