@@ -12,9 +12,7 @@ echo_warning() {
 }
 
 install_xcode_command_line_tools() {
-  is_installed=$(xcode-select --print-path &> /dev/null)
-
-  if $is_installed
+  if which xcode-select &> /dev/null
   then
     version=$(xcode-select -version | awk '{print ($3+0)}')
     echo_warning "xcode-select $version is already installed."
@@ -26,9 +24,7 @@ install_xcode_command_line_tools() {
 }
 
 install_homebrew() {
-  is_installed=$(which brew &> /dev/null)
-
-  if $is_installed
+  if which brew &> /dev/null
   then
     version=$(brew --version | head -1 | awk '{print $2}')
     echo_warning "homebrew $version is already installed (so it will be updated)."
