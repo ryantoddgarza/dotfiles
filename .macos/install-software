@@ -70,9 +70,9 @@ main() {
   brew install mongodb-community
 
   # macOS and iOS Development Tools
-  brew install swiftlint
   mas install 497799835 # Install Xcode by ID
   sudo xcodebuild -license accept
+  brew install swiftlint # A full installation of Xcode is required to compile this software
 
   # Productivity and Utilities
   brew install cloc
