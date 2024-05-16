@@ -26,8 +26,8 @@ git clone --bare https://github.com/ryantoddgarza/dotfiles.git $HOME/.dotfiles
 
 ```shell
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout --force
-dotfiles submodule update --init --recursive
-dotfiles config status.showUntrackedFiles no
+dotf submodule update --init --recursive
+dotf config status.showUntrackedFiles no
 ```
 
 4. Review the following scripts and make additions or omissions.
