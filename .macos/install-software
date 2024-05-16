@@ -16,8 +16,6 @@ install_xcode_command_line_tools() {
   then
     version=$(xcode-select -version | awk '{print ($3+0)}')
     echo_warning "xcode-select $version is already installed."
-    echo 'To reinstall or update, run:'
-    echo '  xcode-select --install'
   else
     xcode-select --install
   fi
@@ -27,8 +25,7 @@ install_homebrew() {
   if which brew &> /dev/null
   then
     version=$(brew --version | head -1 | awk '{print $2}')
-    echo_warning "homebrew $version is already installed (so it will be updated)."
-    brew update
+    echo_warning "homebrew $version is already installed."
   else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew analytics off
