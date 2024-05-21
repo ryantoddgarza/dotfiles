@@ -18,6 +18,6 @@
 [http]
 	postBuffer = 524288000
 [user]
-	# Configure in ~/.gitconfig.local
+	# Configure in ~/.local/.gitconfig
 [include]
-	path = .gitconfig.local
+	path = .local/.gitconfig
