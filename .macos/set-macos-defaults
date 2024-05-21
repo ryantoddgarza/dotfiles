@@ -119,6 +119,11 @@ sudo pmset -a standbydelay 86400
 # Disable screen dim on battery
 sudo pmset -b lessbright 0
 
+# SECTION: Accessibility
+
+# Reduce transparency
+sudo defaults write com.apple.universalaccess reduceTransparency -bool true
+
 # SECTION: Screencapture
 
 # Set screencapture directory
