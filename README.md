@@ -47,6 +47,8 @@ cd ~/.macos
 
 ### Path 2: Run the `bootstrap` script
 
+***DEPRECATED***
+
 The [`bootstrap` script](.macos/bootstrap) provides a single command to execute the manual installation steps above.
 
 ***Warning***: This command will always checkout _forcibly_; local changes will be lost. Backup you files before proceeding.
