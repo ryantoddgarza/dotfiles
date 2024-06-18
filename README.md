@@ -18,8 +18,6 @@ xcode-select --install
 git clone --bare https://github.com/ryantoddgarza/dotfiles.git $HOME/.dotfiles
 ```
 
-### Path 1: Run scripts manually
-
 3. Checkout and setup the Git repository.
 
 ***Warning***: This command will overwrite existing files with matching filenames. Backup your files before proceeding.
@@ -43,26 +41,6 @@ cd ~/.macos
 ./install-software
 ./set-app-preferences
 ./set-macos-defaults
-```
-
-### Path 2: Run the `bootstrap` script
-
-***DEPRECATED***
-
-The [`bootstrap` script](.macos/bootstrap) provides a single command to execute the manual installation steps above.
-
-***Warning***: This command will always checkout _forcibly_; local changes will be lost. Backup you files before proceeding.
-
-3. Run the bootstrap script.
-
-```shell
-~/.macos/bootstrap
-```
-
-For additional usage options, run:
-
-```shell
-~/.macos/bootstrap --help
 ```
 
 ## Troubleshooting
