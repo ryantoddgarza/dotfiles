@@ -31,7 +31,6 @@ dotf config status.showUntrackedFiles no
 4. Review the following scripts and make additions or omissions.
 
 - `~/.macos/install-software`
-- `~/.macos/set-app-preferences`
 - `~/.macos/set-macos-defaults`
 
 5. Run the provided scripts.
@@ -39,7 +38,6 @@ dotf config status.showUntrackedFiles no
 ```shell
 cd ~/.macos
 ./install-software
-./set-app-preferences
 ./set-macos-defaults
 ```
 
