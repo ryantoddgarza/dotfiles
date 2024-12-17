@@ -1,0 +1,18 @@
+[font]
+size = 13
+offset = { x = 0, y = 6 }
+
+[colors]
+
+[colors.primary]
+foreground = "#c6c6c6"
+background = "#1c1c1c"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "On" }
+blink_interval = 500
+blink_timeout = 0
+
+[mouse]
+hide_when_typing = true
