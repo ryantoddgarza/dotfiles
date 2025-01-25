@@ -46,7 +46,6 @@ main() {
   brew install zsh
   brew install tmux
   brew install shellcheck
-  brew install font-meslo-lg
   brew install --cask alacritty
 
   # Development Tools
