@@ -45,4 +45,4 @@ cd ~/.macos
 
 ### Could not write domain
 
-If you get the error `Could not write domain <domain>; exiting` after running [set-macos-defaults](.macos/set-macos-defaults), you may need to grant your terminal app Full Disk Access: _System Preferences > Privacy > Full Disk Access_
+If you get the error `Could not write domain <domain>; exiting` after running [set-macos-defaults](.macos/set-macos-defaults), you may need to grant your terminal app Full Disk Access: _System Settings > Privacy & Security > Full Disk Access_
