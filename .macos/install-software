@@ -54,7 +54,6 @@ main() {
   brew install vim
   brew install neovim
   brew install node
-  brew install node@18
   brew install python
   python3 -m pip install --upgrade pip
   brew install clang-format

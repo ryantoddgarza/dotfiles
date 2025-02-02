@@ -26,5 +26,4 @@ alias txks="tmux kill-session -t"
 alias txat="tmux attach -t"
 
 # Node
-alias node18="export PATH=/opt/homebrew/opt/node@18/bin:$PATH; node --version"
 alias node20="export PATH=/opt/homebrew/opt/node@20/bin:$PATH; node --version"
