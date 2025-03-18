@@ -5,8 +5,28 @@ offset = { x = 0, y = 6 }
 [colors]
 
 [colors.primary]
-foreground = "#c6c6c6"
+foreground = "#d8d8d3"
 background = "#1c1c1c"
+
+[colors.normal]
+black = "#000000"
+red = "#f53116"
+green = "#60cf09"
+yellow = "#e6bf0a"
+blue = "#5fb4f8"
+magenta = "#f74b98"
+cyan = "#0ad1f5"
+white = "#e8e8e8"
+
+[colors.bright]
+black = "#606060"
+red = "#f75c47"
+green = "#78f516"
+yellow = "#f6d22d"
+blue = "#90cbfa"
+magenta = "#f97cb4"
+cyan = "#3bdaf7"
+white = "#ffffff"
 
 [cursor]
 style = { shape = "Block", blinking = "On" }
