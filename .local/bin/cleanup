@@ -5,57 +5,35 @@
 
 set -e -o pipefail
 
-exit_trap() {
-  # Invalidate cached credentials
-  sudo -k
-}
+clean_user() {
+  echo "› ${FUNCNAME[0]}"
 
-trap exit_trap EXIT
+  # Remove user logs (background)
+  find "$HOME"/Library/Logs -type f -delete &
 
-# Validate sudo user
-sudo -v
-
-# HELPER FUNCTIONS
-
-prefer_empty_dir() {
-  if [ "$(ls "$1")" ]
-  then
-    echo "Dirty: Unnecessary items in $(basename "$1")"
+  # Empty the trash
+  if [ "$(ls -A ~/.Trash 2>/dev/null)" ]; then
+    osascript -e 'tell application "Finder" to empty trash'
   fi
-}
 
-# CLEANUP FUNCTIONS
-
-clean_files() {
-  echo '› clean_files'
-  prefer_empty_dir "$HOME"/Desktop
-  prefer_empty_dir "$HOME"/Downloads
+  # Ensure background tasks complete before exiting the function
+  wait
 }
 
 clean_system() {
-  echo '› clean_system'
+  echo "› ${FUNCNAME[0]}"
+
   # Flush disk cache
   sudo purge
+
   # Flush DNS cache
   sudo dscacheutil -flushcache
   sudo killall -HUP mDNSResponder
-  # Remove user logs
-  sudo rm -rf "$HOME"/Library/Logs/*
-  # Remove system logs
-  sudo rm -rf /private/var/log/*
-  # Remove .DS_Store files
-  find "$HOME" -type f -name '.DS_Store' -delete
-}
-
-empty_trash() {
-  echo '› empty_trash'
-  sudo rm -rf "$HOME"/.Trash/{.[!.],..?,}*
 }
 
 main() {
+  clean_user
   clean_system
-  clean_files
-  empty_trash
 }
 
 main
