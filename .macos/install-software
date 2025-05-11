@@ -62,7 +62,8 @@ main() {
   brew install typescript-language-server
   pip install --user python-lsp-server
 
-  # Web Development Tools
+  # Database Management Systems
+  brew install mysql
   brew tap mongodb/brew
   brew install mongodb-community
 
